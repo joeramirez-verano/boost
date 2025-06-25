@@ -1,0 +1,117 @@
+import {BRAND} from '@/config/constant'
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/blocks'
+import Button from '.'
+
+<Meta
+  title="Components/Atoms/Button"
+  component={Button}
+  argTypes={{
+    currentBrand: {
+      name: 'Brand',
+      description: 'Theme change based on Brand (ZLD / MUV)',
+      options: ['ZLD', 'MUV'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    }
+  }}
+/>
+
+export const Template = ({
+  currentBrand,
+  attributes,
+  className,
+  styleOnlyClassName,
+  disabled,
+  fluid,
+  icon,
+  iconOnly,
+  svgProps,
+  iconLeft,
+  onClick,
+  size,
+  style,
+  styleOutline,
+  tag,
+  text,
+  type,
+  url,
+  urlExternal,
+  forwardParam,
+  children
+}) => (
+  <div className={`py-10 ${currentBrand == BRAND.MUV ? 'theme-muv' : 'theme-zld'} ${styleOutline && type === 'action' ? 'rounded bg-green' : ''}`}>
+    <Button
+      currentBrand={currentBrand}
+      attributes={attributes}
+      className={className}
+      styleOnlyClassName={styleOnlyClassName}
+      disabled={disabled}
+      fluid={fluid}
+      onClick={onClick}
+      size={size}
+      style={style}
+      styleOutline={styleOutline}
+      tag={tag}
+      text={text}
+      type={type}
+      url={url}
+      urlExternal={urlExternal}
+      forwardParam={forwardParam}
+      children={children}
+    />
+  </div>
+)
+
+# Button
+
+- Most versatile component of the project. Offer variety of customization.
+- We can use it as react component.
+- Also it called by gutenberg button block.
+- Each brand have 4 different versions (See type props) of it.
+- As well as 4 different sizes.
+
+## Design
+
+- [Design is here](https://www.figma.com/file/AqGeBrT86Lc4PIZzcPw9R8/Brand-UI-Working-Project?type=design&node-id=22%3A1815&mode=design&t=m2Bbd5R44QvjsaVj-1)
+
+## Functions
+
+- Powerfull props to customization to next lavel.
+- Can be used as button or link.
+- `onClick` function can be passed.
+- Can be used as icon only button.
+
+## Component
+
+<Canvas>
+  <Story
+    name="Button Component"
+    args={{
+      currentBrand: 'ZLD',
+      text: 'Press Me',
+      type: 'primary',
+      size: 'md',
+      styleOutline: false,
+      url: 'https://example.com',
+      urlExternal: false,
+      tag: 'button',
+      fluid: false,
+      className: 'mx-8',
+      styleOnlyClassName: false,
+      disabled: false,
+      attributes: {
+        'aria-expanded': true,
+        'aria-hidden': false
+      }
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story={'Button Component'} />

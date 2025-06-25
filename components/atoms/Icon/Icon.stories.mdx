@@ -1,0 +1,68 @@
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/blocks'
+import Icon from '.'
+import {icons} from './icons'
+
+<Meta
+  title="Components/Atoms/Icon"
+  component={Icon}
+  argTypes={{
+    size: {
+      name: 'Size',
+      description: 'Icon Size',
+      options: ['sm', 'md', 'lg'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    }
+  }}
+/>
+
+export const Template = ({size}) => (
+  <>
+    <div className={`mb-10 grid grid-cols-4 gap-10`}>
+      {Object.entries(icons).map((icon, index) => (
+        <div key={index} className="flex flex-col">
+          <span>
+            <Icon name={icon[0]} size={size} />
+          </span>
+          <small>{icon[0]}</small>
+        </div>
+      ))}
+    </div>
+  </>
+)
+
+# Icon
+
+- Use this component to display a Custom icon.
+- All icons stored in `icons` object in `icons.js` file.
+- Each items in `icons` object is a key-value pair where the icon name is a arrow function as a key and value return jsx of the svg. So, that it formate clearly in editor.
+
+## Functions
+
+- The `name` prop is required and should be a string.
+- The `size` prop is optional and should be a string.
+- The `size` prop can be one of `sm`, `md`, or `lg` and defaults to `md`.
+
+## Author
+
+Feroz
+
+## Props
+
+<ArgsTable story={'Icon'} />
+
+<Canvas>
+  <Story
+    name="Icon"
+    args={{
+      size: 'md'
+    }}
+>
+
+    {Template.bind({})}
+
+  </Story>
+</Canvas>

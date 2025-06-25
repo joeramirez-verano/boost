@@ -1,0 +1,69 @@
+import {BRAND} from '@/config/constant'
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/blocks'
+import Logo from '.'
+
+<Meta
+  title="Components/Atoms/Logo"
+  component={Logo}
+  argTypes={{
+    currentBrand: {
+      name: 'Brand',
+      description: 'Theme change based on Brand (ZLD / MUV)',
+      options: ['ZLD', 'MUV'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    },
+    theme: {
+      name: 'Dark/Light',
+      description: 'Dark or light version of the logo',
+      options: ['dark', 'light'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    },
+    size: {
+      name: 'Size',
+      description: '',
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    }
+  }}
+/>
+
+export const Template = ({currentBrand, theme, size}) => (
+  <div className={`p-4 ${currentBrand === BRAND.MUV ? 'theme-muv' : 'theme-zld'} ${theme === 'dark' ? 'text-bg-black' : 'bg-bg-black text-bg'}`}>
+    <Logo currentBrand={currentBrand} className={`${theme === 'dark' ? 'text-bg-black' : 'bg-bg-black text-bg'}`} size={size} />
+  </div>
+)
+
+# Logo
+
+Use this component to display a button. Use it anywhere you would use an `<a>` or `<button>` element.
+
+## Props
+
+<ArgsTable story={'Logo'} />
+
+## Component
+
+<Canvas>
+  <Story
+    name="Logo"
+    args={{
+      currentBrand: 'ZLD',
+      theme: 'dark',
+      size: 'md'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
