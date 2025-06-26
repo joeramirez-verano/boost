@@ -1,0 +1,113 @@
+/* .button {
+  @apply mb-2 inline-flex cursor-pointer items-center justify-center border-2 font-semibold capitalize transition-all duration-300;
+
+  &.iconLeft {
+    @apply flex-row-reverse;
+
+    & svg {
+      @apply ml-0 mr-12;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active:not([disabled]) {
+    @apply no-underline;
+  }
+
+  /* SIZES */
+  /* &.lg {
+    @apply px-20 py-6 text-xl;
+    &.iconOnly {
+      @apply px-6;
+    }
+  }
+
+  &.md {
+    @apply px-10 py-4 text-lg;
+    &.iconOnly {
+      @apply px-4;
+    }
+  }
+
+  &.sm {
+    @apply px-8 py-3 text-sm;
+    &.iconOnly {
+      @apply px-2;
+    }
+  }
+
+  &.xs {
+    @apply !border px-5 py-2 text-sm;
+    &.iconOnly {
+      @apply px-2;
+    }
+  }
+
+  &.fluid {
+    @apply block w-full text-center;
+  }
+
+  /* TYPES */
+  /* &.primary {
+    @apply border-2 border-button-primary-border bg-button-primary-bg font-heading text-button-primary-text hover:bg-button-primary-bg-hover hover:text-button-primary-text-hover focus:bg-button-primary-bg-down focus:text-button-primary-text-down focus:ring-2 focus:ring-offset-1 focus:ring-offset-blue active:bg-button-primary-bg-active active:text-button-primary-text-active active:shadow-inner;
+
+    &.outline {
+      @apply border-2 border-button-outline-border bg-button-outline-bg text-button-outline-text hover:bg-gray-50 focus:border-button-outline-border-focus focus:ring-0  focus:ring-offset-0 active:bg-button-outline-bg-active;
+    }
+
+    &.disabled {
+      @apply border-2 border-button-action-bg-disabled bg-button-action-bg-disabled text-button-action-text-disabled opacity-60;
+    }
+  } */
+
+  /* &.secondary {
+    @apply border-button-secondary-border bg-button-secondary-bg font-heading text-button-secondary-text hover:border-button-secondary-border-hover hover:bg-button-secondary-bg-hover focus:border-button-secondary-border-focus active:border-black/10 active:bg-button-secondary-bg-active active:shadow-[2px_2px_2px_0px_rgba(0,0,0,0.1)_inset];
+
+    &.outline {
+      @apply border-button-outline-secondary-border bg-button-outline-secondary-bg text-button-outline-secondary-text hover:bg-button-outline-secondary-bg-hover hover:!text-button-outline-secondary-text-hover focus:border-button-outline-secondary-border-focus active:border-black/10 active:bg-button-outline-secondary-bg-active active:shadow-[2px_2px_2px_0px_rgba(0,0,0,0.1)_inset];
+    }
+
+    &.disabled {
+      @apply opacity-50;
+    }
+  } */
+
+  /* &.action {
+    @apply border-[3px] border-button-action-border bg-button-action-bg font-heading text-button-action-text hover:border-button-action-border-hover hover:bg-button-action-bg-hover hover:text-button-action-text-hover focus:border-button-action-border-focus focus:bg-button-action-bg-focus focus:text-button-action-text-focus active:border-transparent active:bg-button-action-bg-active active:text-button-action-text-active active:shadow-[2px_2px_2px_0px_rgba(0,0,0,0.4)_inset];
+
+    &.outline {
+      @apply border-button-outline-action-border hover:border-button-outline-action-border hover:bg-button-action-bg hover:text-button-action-text hover:shadow-[2px_2px_2px_0px_rgba(0,0,0,0.6)] focus:border-button-outline-action-border-focus focus:bg-button-action-bg focus:text-button-action-text active:border-button-outline-action-border active:bg-button-action-bg active:text-button-action-text active:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)];
+    }
+
+    &.disabled {
+      @apply border-button-action-bg-disabled bg-button-action-bg-disabled text-button-action-text-disabled opacity-60;
+    }
+  }
+
+  &.ghost {
+    @apply border-button-outline-border text-button-outline-text hover:bg-gray-50 hover:text-button-primary-bg-hover focus:border-button-primary-bg active:border-transparent;
+
+    &.disabled {
+      @apply opacity-50;
+    }
+  }
+
+  &.disabled {
+    @apply cursor-not-allowed;
+  } */
+
+  /* &.iconOnly {
+    & svg {
+      @apply m-0;
+    }
+  }
+}
+
+.muv-theme {
+  &.button {
+    &.primary {
+      @apply hover:!text-black hover:!shadow-none;
+    }
+  }
+} */

@@ -1,0 +1,103 @@
+import {BRAND} from '@/config/constant'
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/blocks'
+import brandsInState from 'data/brandsInState'
+import BrandGallery from './'
+// import BrandGallery from './'
+
+<Meta
+  title="Components/Organisms/BrandGallery"
+  component={BrandGallery}
+  argTypes={{
+    currentBrand: {
+      name: 'Brand',
+      description: 'Theme change based on Brand (ZLD / MUV)',
+      options: ['ZLD'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    },
+    location: {
+      name: 'State',
+      description: 'Brand change based on user location/state',
+      options: ['arizona', 'arkansas', 'connecticut', 'illinois'],
+      control: {type: 'select'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    },
+    brandsInState: {
+      name: 'Brand Data',
+      description: 'Array of object for each brand',
+      options: [],
+      control: {type: null},
+      table: {
+        type: {summary: 'array'},
+        defaultValue: {summary: 'Static'}
+      }
+    },
+    fadeInOutTime: {
+      name: 'Fade in/out time',
+      description: 'Both fadein and fadeout individully.',
+      options: [],
+      control: {type: 'range', min: 500, max: 5000, step: 500},
+      table: {
+        type: {summary: 'number'},
+        defaultValue: {summary: 1000}
+      }
+    },
+    swapDelay: {
+      name: 'Swap Delay',
+      description: 'Delay between items swaping',
+      options: [],
+      control: {type: 'range', min: 500, max: 5000, step: 500},
+      table: {
+        type: {summary: 'number'},
+        defaultValue: {summary: 3000}
+      }
+    }
+  }}
+/>
+
+export const Template = ({currentBrand, location, brandsInState, fadeInOutTime, swapDelay}) => (
+  <div className={`${currentBrand == BRAND.MUV ? 'theme-muv' : 'theme-zld'}`}>
+    <BrandGallery location={location} brandsInState={brandsInState} fadeInOutTime={fadeInOutTime} swapDelay={swapDelay} />
+  </div>
+)
+
+# Brand Gallery
+
+Brand Gallery is a block component that shown on homepage of zenleaf. It's depend on no small/child component. The static data currently using from `data/brandsInState.js`.
+
+## Component
+
+<Canvas>
+  <Story
+    name="Brand Gallery"
+    args={{
+      currentBrand: 'ZLD',
+      location: 'arizona',
+      brandsInState: brandsInState,
+      fadeInOutTime: 1000,
+      swapDelay: 3000
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+## Props
+
+<ArgsTable story={'Brand Gallery'} />
+
+## More information
+
+- Maximum 6 items will show at a time on desktop.
+- Maximum 4 items will show on tablate / mobile / viewport `>=1024px`.
+- More then 6 items for desktop or 4 items for smaller viewport will be shown by fadeIn and fadeOut randomly.
+- Data Object Propertyies:
+  - Items shown based on user state location. So, data object contain `states` field which is an array of state.
+  - To maintain proper size for each logo we also got a field called `scale` that define the size individually.
+  - Other propertyies are: `name, media,` and ` url`. So we got 5 items per brands including `states` and `scale`.

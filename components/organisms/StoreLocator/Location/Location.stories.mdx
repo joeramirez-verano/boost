@@ -1,0 +1,229 @@
+import {BRAND} from '@/config/constant'
+import {ArgsTable, Canvas, Meta, Story} from '@storybook/blocks'
+import Location from './index.js'
+
+<Meta
+  title="Components/Organisms/StoreLocator/Location"
+  component={Location}
+  argTypes={{
+    currentBrand: {
+      name: 'Brand',
+      description: 'Theme change based on Brand (ZLD / MUV)',
+      options: ['ZLD', 'MUV'],
+      control: {type: 'radio'},
+      table: {
+        type: {summary: 'string'},
+        defaultValue: {summary: 'N/A'}
+      }
+    }
+  }}
+/>
+
+export const store = {
+  __typename: 'Location_Nap',
+  post_id: 419,
+  locationId: 'PA008',
+  slug: 'abington',
+  post_title: 'Abington',
+  permalink: 'https://zenleafdispstg.wpengine.com/locations/abington/',
+  title: 'Abington',
+  guid: 'http://verano-ssot.local/?post_type=location&#038;p=144',
+  location_status: 'Open',
+  media: {
+    __typename: 'Location_Media',
+    thumbnailImage: {
+      __typename: 'MediaItem',
+      sourceUrl: 'https://zenleafdispstg.wpengine.com/wp-content/uploads/2021/12/abington-thumbnail.jpg',
+      altText: 'Abington Thumbnail'
+    }
+  },
+  storeEmbeds: {
+    __typename: 'Location_Storeembeds',
+    medical_store_id: 782,
+    recreational_store_id: null,
+    sweed_embed_url: null,
+    mapZoomOverride: null
+  },
+  nap: {
+    __typename: 'Location_Nap',
+    locationId: 'PA008',
+    address_1: '1626 Old York Rd',
+    address_2: null,
+    city: 'Abington',
+    zip: '19001',
+    state: {
+      __typename: 'State',
+      id: 'cG9zdDo3NQ==',
+      post_title: 'Pennsylvania',
+      slug: 'pennsylvania',
+      abbr: 'PA'
+    },
+    lat: '40.130264',
+    lng: '-75.11682'
+  },
+  _geoloc: {
+    lat: '40.130264',
+    lng: '-75.11682'
+  },
+  thumbnail_image: {
+    url: 'https://zenleafdispstg.wpengine.com/wp-content/uploads/2021/12/abington-thumbnail.jpg',
+    slug: 'Abington Thumbnail'
+  },
+  medical_store_id: 782,
+  recreational_store_id: null,
+  sweed_embed_url: null,
+  mapZoomOverride: null,
+  address_1: '1626 Old York Rd',
+  address_2: null,
+  city: 'Abington',
+  zip: '19001',
+  state: {
+    __typename: 'State',
+    id: 'cG9zdDo3NQ==',
+    post_title: 'Pennsylvania',
+    slug: 'pennsylvania',
+    abbr: 'PA'
+  },
+  lat: '40.130264',
+  lng: '-75.11682',
+  address: {
+    line1: '1626 Old York Rd ',
+    line2: 'Abington, PA 19001'
+  }
+}
+
+export const storeTimings = [
+  {
+    __typename: 'RootQueryToLocationConnectionEdge',
+    cursor: 'YXJyYXljb25uZWN0aW9uOjI2MzE3',
+    node: {
+      __typename: 'Location',
+      id: 'cG9zdDoyNjMxNw==',
+      slug: 'norristown',
+      title: 'Norristown',
+      guid: 'https://zenleafdispensaries.com/?post_type=location&#038;p=26317',
+      location_status: {
+        __typename: 'Location_LocationStatus',
+        locationStatus: 'Open'
+      },
+      hours: {
+        __typename: 'Location_Hours',
+        timezoneOffset: 'America/Los_Angeles',
+        specialHoursOverride: null,
+        sunday: {
+          __typename: 'Location_Hours_Sunday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        },
+        monday: {
+          __typename: 'Location_Hours_Monday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        },
+        tuesday: {
+          __typename: 'Location_Hours_Tuesday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        },
+        wednesday: {
+          __typename: 'Location_Hours_Wednesday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        },
+        thursday: {
+          __typename: 'Location_Hours_Thursday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        },
+        friday: {
+          __typename: 'Location_Hours_Friday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        },
+        saturday: {
+          __typename: 'Location_Hours_Saturday',
+          closedB: null,
+          closed: '8:00 PM',
+          open: '10:00 AM'
+        }
+      },
+      rec_hours: {
+        __typename: 'Location_RecHours',
+        hasSaperateRecHours: null,
+        timezoneOffsetRec: null,
+        specialHoursOverrideRec: null,
+        sundayRec: {
+          __typename: 'Location_RecHours_SundayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        },
+        mondayRec: {
+          __typename: 'Location_RecHours_MondayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        },
+        tuesdayRec: {
+          __typename: 'Location_RecHours_TuesdayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        },
+        wednesdayRec: {
+          __typename: 'Location_RecHours_WednesdayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        },
+        thursdayRec: {
+          __typename: 'Location_RecHours_ThursdayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        },
+        fridayRec: {
+          __typename: 'Location_RecHours_FridayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        },
+        saturdayRec: {
+          __typename: 'Location_RecHours_SaturdayRec',
+          closedB: null,
+          closed: null,
+          open: null
+        }
+      }
+    }
+  }
+]
+
+export const Template = ({currentBrand}) => (
+  <div className={`${currentBrand == BRAND.MUV ? 'theme-muv' : 'theme-zld'}`}>
+    <Location store={store} storeTimings={storeTimings} currentBrand={currentBrand} />
+  </div>
+)
+
+## Props
+
+<ArgsTable story={'Location'} />
+
+## Component
+
+<Canvas>
+  <Story
+    name="Location"
+    args={{
+      currentBrand: 'ZLD'
+    }}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>

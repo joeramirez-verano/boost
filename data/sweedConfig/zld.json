@@ -1,0 +1,218 @@
+[
+  {
+    "id": 57,
+    "name": "Zen Leaf Morgantown",
+    "slug": "morgantown",
+    "geoState": "west-virginia"
+  },
+  {
+    "id": 78,
+    "name": "Zen Leaf Westover",
+    "slug": "westover",
+    "geoState": "west-virginia"
+  },
+  {
+    "id": 88,
+    "name": "Zen Leaf Wheeling",
+    "slug": "wheeling",
+    "geoState": "west-virginia"
+  },
+  {
+    "id": 92,
+    "name": "Zen Leaf Clarksburg",
+    "slug": "clarksburg",
+    "geoState": "west-virginia"
+  },
+  {
+    "id": 106,
+    "name": "Zen Leaf York",
+    "slug": "york",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 143,
+    "name": "Zen Leaf Buckhannon",
+    "slug": "buckhannon",
+    "geoState": "west-virginia"
+  },
+  {
+    "id": 145,
+    "name": "Zen Leaf Factory Cranberry",
+    "slug": "cranberry",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 146,
+    "name": "Zen Leaf Monroeville",
+    "slug": "monroeville",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 147,
+    "name": "Zen Leaf West Chester",
+    "slug": "west-chester",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 148,
+    "name": "Zen Leaf Malvern",
+    "slug": "malvern",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 149,
+    "name": "Zen Leaf Pittsburgh - Robinson",
+    "slug": "pittsburgh",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 150,
+    "name": "Zen Leaf Harrisburg",
+    "slug": "harrisburg",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 151,
+    "name": "Zen Leaf Washington",
+    "slug": "washington",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 152,
+    "name": "Zen Leaf Philadelphia",
+    "slug": "philadelphia",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 153,
+    "name": "Zen Leaf Sellersville",
+    "slug": "sellersville",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 154,
+    "name": "Zen Leaf Altoona",
+    "slug": "altoona",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 155,
+    "name": "Zen Leaf Pittsburgh - McKnight",
+    "slug": "pittsburgh-mcknight",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 156,
+    "name": "Zen Leaf Factory Wynnewood",
+    "slug": "wynnewood",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 157,
+    "name": "Zen Leaf New Kensington",
+    "slug": "new-kensington",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 158,
+    "name": "Zen Leaf Abington",
+    "slug": "abington",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 159,
+    "name": "Zen Leaf Factory Fairless Hills",
+    "slug": "fairless-hills",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 160,
+    "name": "Zen Leaf Clifton Heights",
+    "slug": "clifton-heights",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 179,
+    "name": "Zen Leaf Gilbert",
+    "slug": "gilbert",
+    "geoState": "arizona"
+  },
+  {
+    "id": 180,
+    "name": "Zen Leaf Phoenix - Cave Creek",
+    "slug": "phoenix-n-cave-creek",
+    "geoState": "arizona"
+  },
+  {
+    "id": 181,
+    "name": "Zen Leaf Mesa",
+    "slug": "mesa",
+    "geoState": "arizona"
+  },
+  {
+    "id": 182,
+    "name": "Zen Leaf Phoenix - Dunlap",
+    "slug": "phoenix-w-dunlap",
+    "geoState": "arizona"
+  },
+  {
+    "id": 183,
+    "name": "Zen Leaf Arcadia",
+    "slug": "arcadia",
+    "geoState": "arizona"
+  },
+  {
+    "id": 184,
+    "name": "Zen Leaf Chandler",
+    "slug": "chandler",
+    "geoState": "arizona"
+  },
+  {
+    "id": 233,
+    "name": "Zen Leaf Norristown",
+    "slug": "norristown",
+    "geoState": "pennsylvania"
+  },
+  {
+    "id": 382,
+    "name": "Zen Leaf North Las Vegas",
+    "slug": "north-las-vegas",
+    "geoState": "nevada"
+  },
+  {
+    "id": 383,
+    "name": "Zen Leaf Flamingo",
+    "slug": "flamingo",
+    "geoState": "nevada"
+  },
+  {
+    "id": 384,
+    "name": "Zen Leaf Carson City",
+    "slug": "carson-city",
+    "geoState": "nevada"
+  },
+  {
+    "id": 385,
+    "name": "Zen Leaf Las Vegas",
+    "slug": "las-vegas",
+    "geoState": "nevada"
+  },
+  {
+    "id": 389,
+    "name": "Zen Leaf Reno",
+    "slug": "reno",
+    "geoState": "nevada"
+  },
+  {
+    "id": 547,
+    "name": "Cannabist Tempe by Zen Leaf",
+    "slug": "tempe",
+    "geoState": "arizona"
+  },
+  {
+    "id": 548,
+    "name": "SWC Prescott by Zen Leaf",
+    "slug": "prescott",
+    "geoState": "arizona"
+  }
+]

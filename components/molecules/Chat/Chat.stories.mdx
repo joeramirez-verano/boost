@@ -1,0 +1,45 @@
+import {Meta, Story, Canvas, ArgsTable} from '@storybook/addon-docs'
+import Chat from '../Chat'
+import {StoryBookProvider} from '@/components/common/StoryBookProvider'
+
+<Meta title="Components/Molecules/Chat" component={Chat} />
+
+# Chat
+
+The `Chat` component dynamically integrates the MedChat widget, providing live support capabilities for website users.
+
+## Demo
+
+This story illustrates the rendering of the Chat component:
+
+<Canvas>
+  <Story name="Chat">
+    <StoryBookProvider
+      state={{
+        passedAgeGate: 'verified',
+        hideDeliveryModal: 'hide',
+        liveChat: 'gcUuMpODkE60K6Yvjs6quA' //live chat id for new-jersey
+      }}
+    >
+      <Chat />
+    </StoryBookProvider>
+  </Story>
+</Canvas>
+
+## Behavior
+
+**Live Chat Integration:**
+
+- **MedChat Widget Loading:** If a valid `liveChat` API key exists in state values, the component fetches the MedChat widget script from `https://medchatapp.com/widget/widget.js`.
+- **State-Based Rendering:** The widget is only rendered when:
+  - The user has passed the age gate (`passedAgeGate` state value is `true`).
+  - The delivery modal is not present (`hideDeliveryModal` state value is not `'appeared'`).
+
+**Dynamic Script Management:**
+
+- **Route Change Handling:** Upon route changes, the component removes any existing MedChat scripts and frames, ensuring a clean slate for the new route.
+
+**Component Advantages:**
+
+- **State-Driven Management:** Configuration is handled through state values, eliminating the need for external props on the component itself.
+- **Improved User Experience:** Dynamic rendering based on state ensures the chat widget appears only when relevant and doesn't obstruct other UI elements.

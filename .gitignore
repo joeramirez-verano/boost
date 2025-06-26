@@ -1,0 +1,42 @@
+# Vite build output
+dist/
+!.vitepress/dist/
+
+# Vite cache
+node_modules/
+.vite/
+
+# Dependency directories
+.pnpm/
+.pnpm-debug.log
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Output from TypeScript / build tools
+*.tsbuildinfo
+
+# Local env files
+.env*
+!.env.example
+
+# Next.js (if you copied anything from a Next.js template)
+.next/
+
+# Misc
+coverage/
+*.log

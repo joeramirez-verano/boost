@@ -1,0 +1,38 @@
+/* Jost Fonts */
+@font-face {
+  font-family: 'Jost';
+  src: url('../fonts/Jost-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../fonts/Jost-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../fonts/Jost-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Add the rest of the Jost fonts... */
+
+/* Afacad Fonts */
+@font-face {
+  font-family: 'Afacad';
+  src: url('../fonts/Afacad-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Optional CSS Variables */
+:root {
+  --font-heading: 'Jost', sans-serif;
+  --font-body: 'Afacad', sans-serif;
+  --font-graphic: 'Jost', sans-serif;
+}
