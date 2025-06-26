@@ -8,6 +8,9 @@ export default defineConfig({
         port: 3000,
         open: true,
     },
+    define: {
+    __API_BASE__: JSON.stringify('https://zenleafdispensaries.com/'),
+  },
     build: {
         outDir: 'dist',
     }, 
