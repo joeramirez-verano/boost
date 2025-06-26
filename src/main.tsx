@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "../app/globals.css";
+import './styles/fonts.css'
 
 import Header from "@/components/HeaderZld/index";
 import Footer from "../components/molecules/Footer/ZLD/index";
@@ -26,7 +27,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <div id="app" className="flex-1" />
+        <div id="app" className="flex-1">
+          {/* <!-- Jane's content will be injected here --> */}
+        </div>
         <Footer />
         <noscript>
           <p className="p-4 text-center text-red-600">

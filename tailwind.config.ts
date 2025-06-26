@@ -1,96 +1,102 @@
-import type { Config } from "tailwindcss";
+const plugin = require('tailwindcss/plugin')
+const colors = require('./tailwindcolors')
 
-const config: Config = {
-    darkMode: ["class"],
-    content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}"
+module.exports = {
+  content: [
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './safelist.txt',
+    './safelist/**/*.{js,ts,jsx,tsx,mdx,html}',
+    './data/*.js'
   ],
   theme: {
-  	extend: {
-  		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
-  			},
-  			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
-  			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
-  			},
-  			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
-  			chart: {
-  				'1': 'hsl(var(--chart-1))',
-  				'2': 'hsl(var(--chart-2))',
-  				'3': 'hsl(var(--chart-3))',
-  				'4': 'hsl(var(--chart-4))',
-  				'5': 'hsl(var(--chart-5))'
-  			},
-  			sidebar: {
-  				DEFAULT: 'hsl(var(--sidebar-background))',
-  				foreground: 'hsl(var(--sidebar-foreground))',
-  				primary: 'hsl(var(--sidebar-primary))',
-  				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-  				accent: 'hsl(var(--sidebar-accent))',
-  				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-  				border: 'hsl(var(--sidebar-border))',
-  				ring: 'hsl(var(--sidebar-ring))'
-  			}
-  		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		},
-  		keyframes: {
-  			'accordion-down': {
-  				from: {
-  					height: '0'
-  				},
-  				to: {
-  					height: 'var(--radix-accordion-content-height)'
-  				}
-  			},
-  			'accordion-up': {
-  				from: {
-  					height: 'var(--radix-accordion-content-height)'
-  				},
-  				to: {
-  					height: '0'
-  				}
-  			}
-  		},
-  		animation: {
-  			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
-  	}
+    colors: {
+      ...colors,
+	  PINK: '#f68b1e',
+    },
+    fontSize: {
+      xs: ['var(--text-size-xs)', '150%'],
+      sm: ['var(--text-size-sm)', '150%'],
+      base: ['var(--text-size-base)', '150%'],
+      lg: ['var(--text-size-lg)', '140%'],
+      xl: ['var(--text-size-xl)', '140%'],
+      '2xl': ['var(--text-size-2xl)', '130%'],
+      '3xl': ['var(--text-size-3xl)', '120%'],
+      '4xl': ['var(--text-size-4xl)', '120%'],
+      '5xl': ['var(--text-size-5xl)', '120%'],
+      '6xl': ['var(--text-size-6xl)', '120%'],
+      '7xl': ['var(--text-size-7xl)', '120%'],
+      '8xl': ['var(--text-size-8xl)', '120%'],
+      '9xl': ['var(--text-size-9xl)', '120%']
+    },
+    fontFamily: {
+      body: 'var(--font-body)',
+      heading: 'var(--font-heading)',
+      graphic: 'var(--font-graphic)'
+    },
+    screens: {
+      sm: '576px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1200px',
+      '2xl': '1400px'
+    },
+    extend: {
+      borderRadius: {
+        none: 'var(--rounded-none)',
+        sm: 'var(--rounded-sm)',
+        DEFAULT: 'var(--rounded)',
+        lg: 'var(--rounded-lg)',
+        xl: 'var(--rounded)',
+        full: 'var(--rounded-full)'
+      },
+      backgroundImage: {
+        clouds: "url('/assets/images/labor-day/cloud.jpeg')"
+      },
+      fontWeight: {
+        thin: '300',
+        hairline: '300',
+        extralight: '300',
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
+        extrabold: '700',
+        'extra-bold': '700'
+      },
+      animation: {
+        fadeout: 'fadeOut 1s linear',
+        fadein: 'fadeIn 1s linear',
+        slidertimer: 'sliderTimer 8s linear'
+      },
+      keyframes: {
+        fadeOut: {
+          '0%': {opacity: '1'},
+          '100%': {opacity: '0'}
+        },
+        fadeIn: {
+          '0%': {opacity: '0'},
+          '100%': {opacity: '1'}
+        },
+        sliderTimer: {
+          '0%': {width: '0%'},
+          '100%': {width: '100%'}
+        }
+      }
+    }
   },
-  plugins: [require("tailwindcss-animate")],
-};
-export default config;
+  plugins: [
+    require('tailwind-scrollbar'),
+    plugin(function ({ addBase }: { addBase: (base: Record<string, any>) => void }) {
+      addBase({
+        button: {borderColor: '#333'}
+      })
+    })
+  ],
+  variants: {
+    extend: {
+      fontWeight: ['hover']
+    }
+  }
+}
