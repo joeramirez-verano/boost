@@ -1,4 +1,4 @@
-import Chat from '../../Chat'
+// import Chat from '../../Chat'
 import FooterAppButtons from '../FooterAppButtons'
 import BottomMenu from './BottomMenu'
 import FooterLogo from './FooterLogo'
@@ -12,7 +12,7 @@ const FooterZLD = () => {
         <FooterLogo />
         <FooterMenuZLD />
         <BottomMenu />
-        <Chat />
+        {/* <Chat /> */}
       </div>
     </footer>
   )

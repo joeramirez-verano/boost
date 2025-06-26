@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import FooterDisclaimer from './FooterDisclaimer'
 import {bottomMenu} from './menuData'
 
@@ -13,9 +13,9 @@ const BottomMenu = () => {
       <FooterDisclaimer />
       <nav className="mx-auto flex flex-wrap items-center justify-center gap-6 text-white">
         {bottomMenu.map((item, index) => (
-          <Link key={index} href={item.link} className="font-semibold">
+          <a key={index} href={item.link} className="font-semibold">
             {item.name}
-          </Link>
+          </a>
         ))}
       </nav>
       <p className="mb-0 text-center text-sm font-semibold">{`Copyright © ${year} Zen Leaf.`}</p>

@@ -1,6 +1,5 @@
 import {APP_IMAGES, APP_URLS, BRAND, CURRENT_BRAND} from '@/config/constant'
-import {sendGTMEvent} from '@next/third-parties/google'
-import Image from 'next/image'
+// import {sendGTMEvent} from '@next/third-parties/google'
 
 /**
  *
@@ -16,10 +15,10 @@ export default function IOSAppButton({id = 'ios-app-button', altText = 'Download
       href={APP_URLS[CURRENT_BRAND]}
       className={`inline-block ${className}`}
       id={id}
-      onClick={() => sendGTMEvent({event: GTMEventName})}
+      // onClick={() => sendGTMEvent({event: GTMEventName})}
       aria-label="Install App"
     >
-      <Image
+      <image
         src={APP_IMAGES[CURRENT_BRAND]['ios']}
         alt={altText}
         width={173}

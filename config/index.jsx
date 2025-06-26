@@ -1,4 +1,4 @@
-import {CURRENT_GEO_STATE, DEFAULT_MAPBOX_ACCESS_TOKEN, GEOSTATE, MAPBOX_ACCESS_TOKEN} from './constant'
+import {CURRENT_GEO_STATE, GEOSTATE} from './constant'
 
 /**
  *
@@ -19,8 +19,8 @@ export const REVALIDATE = 60 * 5
 
 export const MAPBOX = {
   [GEOSTATE.FLORIDA]: {
-    DEFAULT_MAPBOX_ACCESS_TOKEN: DEFAULT_MAPBOX_ACCESS_TOKEN, // this will not be exposed to users as its being used by api
-    MAPBOX_TOKEN: MAPBOX_ACCESS_TOKEN,
+    // DEFAULT_MAPBOX_ACCESS_TOKEN: DEFAULT_MAPBOX_ACCESS_TOKEN, // this will not be exposed to users as its being used by api
+    // MAPBOX_TOKEN: MAPBOX_ACCESS_TOKEN,
     MAP_STYLE: 'mapbox://styles/veranodev/cl2wpztkg002w14mrdr12u51s',
     USER_NAME: 'veranodev',
     STYLE_ID: 'cl2wpztkg002w14mrdr12u51s',
@@ -44,8 +44,8 @@ export const MAPBOX = {
     }
   },
   [GEOSTATE.USA]: {
-    DEFAULT_MAPBOX_ACCESS_TOKEN: DEFAULT_MAPBOX_ACCESS_TOKEN, // this will not be exposed to users as its being used by api
-    MAPBOX_TOKEN: MAPBOX_ACCESS_TOKEN,
+    // DEFAULT_MAPBOX_ACCESS_TOKEN: DEFAULT_MAPBOX_ACCESS_TOKEN, // this will not be exposed to users as its being used by api
+    // MAPBOX_TOKEN: MAPBOX_ACCESS_TOKEN,
     MAP_STYLE: 'mapbox://styles/veranodev/cl2woxfdd001614nzeu9rgeib',
     USER_NAME: 'veranodev',
     STYLE_ID: 'cl2woxfdd001614nzeu9rgeib',

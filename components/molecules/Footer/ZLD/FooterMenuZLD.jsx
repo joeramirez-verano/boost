@@ -1,7 +1,7 @@
 'use client'
 import {Disclosure} from '@headlessui/react'
-import {ChevronRightIcon} from '@heroicons/react/solid'
-import Link from 'next/link'
+import { ChevronRightIcon } from '@heroicons/react/24/solid'
+// import Link from 'next/link'
 import menuItems from './menuData'
 
 /**
@@ -62,9 +62,9 @@ const FooterMenuZLD = () => {
             <ul>
               {menuItem.items.map((item, index) => (
                 <li key={index}>
-                  <Link href={item.link} className="mb-2 inline-block font-body text-sm font-medium leading-5">
+                  <a href={item.link} className="mb-2 inline-block font-body text-sm font-medium leading-5">
                     {item.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
