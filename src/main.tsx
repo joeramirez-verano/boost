@@ -22,21 +22,18 @@ function rewriteAllLinksToCustomDomain() {
   });
 }
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("header")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <div id="app" className="flex-1">
-          {/* <!-- Jane's content will be injected here --> */}
-        </div>
-        <Footer />
-        <noscript>
-          <p className="p-4 text-center text-red-600">
-            This app needs JavaScript. Please enable it.
-          </p>
-        </noscript>
-      </div>
+       <Header />
+    </BrowserRouter>
+  </React.StrictMode>
+);
+
+ReactDOM.createRoot(document.getElementById("footer")!).render(
+  <React.StrictMode>
+    <BrowserRouter>
+      <Footer />
     </BrowserRouter>
   </React.StrictMode>
 );
