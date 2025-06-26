@@ -1,26 +1,28 @@
-'use client'
+import { useParams, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import isEqual from 'lodash/isEqual'
-import {useParams, useSearchParams} from 'next/navigation'
-import {useEffect, useState} from 'react'
-
-// custom hook to extract the URL params and URL searchParams as useRouter.query() is no longer supported in next13
-// Example URL: http://localhost:3000/author/[slug]/?isPreview=true&id=100
-// It will give us an object containg both params and search params like: {slug: 'verano',isPreview: 'true',id: '100'}
 
 export const useQueryParams = () => {
-  const params = useParams()
-  const searchParams = useSearchParams()
+  const routeParams = useParams()
+  const location = useLocation()
   const [queryParams, setQueryParams] = useState({})
 
   useEffect(() => {
-    const combinedParams = {...params, ...Object.fromEntries(searchParams)}
-    setQueryParams((prevState) => {
-      if (isEqual(prevState, combinedParams)) {
-        return prevState
+    const searchParams = new URLSearchParams(location.search)
+    const searchParamsObject = Object.fromEntries(searchParams.entries())
+
+    const combinedParams = {
+      ...routeParams,
+      ...searchParamsObject
+    }
+
+    setQueryParams((prev) => {
+      if (isEqual(prev, combinedParams)) {
+        return prev
       }
       return combinedParams
     })
-  }, [params, searchParams])
+  }, [routeParams, location.search])
 
   return queryParams
 }

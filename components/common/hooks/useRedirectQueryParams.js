@@ -1,7 +1,6 @@
-'use client'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
-import {usePathname, useRouter} from 'next/navigation'
-import {useEffect, useState} from 'react'
 const requiredKeys = ['utm_source', 'utm_medium', 'utm_campaign']
 
 export const useSetRedirectQueryParams = () => {
@@ -10,11 +9,11 @@ export const useSetRedirectQueryParams = () => {
     if (typeof sessionStorage === 'undefined') return
 
     const addedProps = sessionStorage.getItem('redirectProps')
-
     if (addedProps && addedProps.length > 2) return
 
     const urlSearchParams = new URLSearchParams(window.location.search)
-    const query = Object.fromEntries(urlSearchParams)
+    const query = Object.fromEntries(urlSearchParams.entries())
+
     Object.keys(query).forEach((key) => {
       if (query[key] === undefined || query[key] === '' || !requiredKeys.includes(key)) {
         delete query[key]
@@ -22,14 +21,15 @@ export const useSetRedirectQueryParams = () => {
     })
 
     sessionStorage.setItem('redirectProps', JSON.stringify(query))
-  })
+  }, [])
 }
 
 export const useShowMenuState = (searchParams) => {
   const [showMenu, setShowMenu] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const pathname = location.pathname
 
-  const router = useRouter()
-  const pathname = usePathname()
   useEffect(() => {
     if (typeof window === 'undefined' || !navigator.cookieEnabled) return
     if (typeof sessionStorage === 'undefined') return
@@ -37,21 +37,19 @@ export const useShowMenuState = (searchParams) => {
     const addedProps = sessionStorage.getItem('redirectProps')
 
     if (!addedProps || addedProps.length < 2) return
-
-    if (addedProps && addedProps.length === 2) return setShowMenu(true)
-
-    const requiredKeys = ['utm_source', 'utm_medium', 'utm_campaign']
+    if (addedProps.length === 2) return setShowMenu(true)
 
     const index = requiredKeys.findIndex((key) => searchParams[key])
-
     if (index !== -1) return setShowMenu(true)
 
     const query = JSON.parse(addedProps)
+    const combinedQueryParams = { ...searchParams, ...query }
+    const newUrl = `${pathname}?${new URLSearchParams(combinedQueryParams).toString()}`
 
-    const combinedQueryParams = {...searchParams, ...query}
-    const newUrl = `${pathname}?${new URLSearchParams(combinedQueryParams)}`
-    router.replace(newUrl)
-  }, [searchParams, pathname])
+    if (location.pathname + location.search !== newUrl) {
+      navigate(newUrl, { replace: true })
+    }
+  }, [searchParams, pathname, location.search])
 
   return [showMenu, setShowMenu]
 }

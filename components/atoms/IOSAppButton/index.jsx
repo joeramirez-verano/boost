@@ -18,7 +18,7 @@ export default function IOSAppButton({id = 'ios-app-button', altText = 'Download
       // onClick={() => sendGTMEvent({event: GTMEventName})}
       aria-label="Install App"
     >
-      <image
+      <img
         src={APP_IMAGES[CURRENT_BRAND]['ios']}
         alt={altText}
         width={173}

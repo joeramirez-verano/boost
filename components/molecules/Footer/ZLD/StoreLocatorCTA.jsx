@@ -1,4 +1,3 @@
-import Link from 'next/link'
 /**
  * ZLD Footer Store Locator CTA
  * @return {Element} Plane JSX
@@ -14,12 +13,12 @@ const StoreLocatorCTA = () => {
         </div>
         <div className="flex-1 ">
           <div className="mt-2  py-4 text-center md:mt-0 md:text-right">
-            <Link
+            <a
               href="/store-locator"
               className="rounded border-2 border-white bg-gray-900 px-12 py-4 font-heading font-bold  capitalize tracking-widest text-white hover:bg-white hover:text-black hover:no-underline focus:bg-gray-800 focus:no-underline active:no-underline "
             >
               Store Locator
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 'use client'
 import {Disclosure} from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
-// import Link from 'next/link'
 import menuItems from './menuData'
 
 /**

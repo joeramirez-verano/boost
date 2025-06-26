@@ -2,7 +2,6 @@
 import Image from '@/components/atoms/Image'
 import {appController} from '@/components/common/hooks/hookstate/appController'
 import arraySwap from '@/functions/arraySwap'
-import Link from 'next/link'
 import {useEffect, useState} from 'react'
 import {brandsInState} from './brandInStateConfig'
 
@@ -81,7 +80,7 @@ export default function BrandGallery({location, fadeInOutTime, swapDelay}) {
                 style={{animationDuration: fadeInOutTime + 'ms'}}
               >
                 {url ? (
-                  <Link href={url} className={`relative aspect-auto`}>
+                  <a href={url} className={`relative aspect-auto`}>
                     {media != null ? (
                       <Image
                         className={`!mb-0 h-8 w-20 rounded-none object-scale-down px-4 lg:!h-16 lg:!w-40 [@media(min-width:480px)]:h-12 [@media(min-width:480px)]:w-28 ${scale}`}
@@ -92,11 +91,11 @@ export default function BrandGallery({location, fadeInOutTime, swapDelay}) {
                     ) : (
                       <span className="inline-block py-2 text-xl font-bold lg:text-4xl">{name}</span>
                     )}
-                  </Link>
+                  </a>
                 ) : (
                   <span className={`relative aspect-auto`} key={index}>
                     {media != null ? (
-                      <Image
+                      <img
                         className={`!mb-0 h-8 w-20 rounded-none object-scale-down px-4 lg:!h-14 lg:!w-36 [@media(min-width:480px)]:h-12 [@media(min-width:480px)]:w-28 ${scale}`}
                         layout="fill"
                         src={media}

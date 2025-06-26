@@ -1,4 +1,3 @@
-// import Link from 'next/link'
 import FooterDisclaimer from './FooterDisclaimer'
 import {bottomMenu} from './menuData'
 

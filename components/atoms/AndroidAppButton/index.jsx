@@ -19,7 +19,7 @@ export default function AndroidAppButton({id = 'android-app-button', altText = '
   // }
 
   return (
-    <image
+    <img
       id={id}
       src={APP_IMAGES[CURRENT_BRAND]['android']}
       alt={altText}
