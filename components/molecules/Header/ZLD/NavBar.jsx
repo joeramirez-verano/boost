@@ -21,7 +21,7 @@ const NavBar = () => {
             <div className="flex items-center justify-between gap-8">
               <a href="/" className="block max-w-[200px] flex-auto" id="home-button">
                 <img
-                  src={'/assets/images/zen-leaf-logo-with-text-white-1.svg'}
+                  src={'/boost/assets/images/zen-leaf-logo-with-text-white-1.svg'}
                   alt="Cannabis store Zen Leaf"
                   layout="fill"
                   className="!relative block max-h-10 max-w-full"
