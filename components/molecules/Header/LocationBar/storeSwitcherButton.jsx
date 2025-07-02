@@ -1,8 +1,6 @@
 'use client'
 import Icon from '@/components/atoms/Icon'
 import {appController} from '@/components/common/hooks/hookstate/appController'
-import {storeSwitcherController} from '@/components/common/hooks/hookstate/storeSwitcherController'
-import StoreSwitcherModal from '@/components/molecules/StoreSwitcherModal'
 import {CURRENT_BRAND} from '@/config/constant'
 import {ChevronDownIcon} from '@heroicons/react/24/solid'
 // import {sendGTMEvent} from '@next/third-parties/google'
@@ -96,7 +94,6 @@ const StoreSwitcherButton = () => {
           </div>
         </button>
       </div>
-      <StoreSwitcherModal />
     </>
   )
 }

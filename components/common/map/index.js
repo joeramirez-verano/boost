@@ -1,8 +1,4 @@
-import usStatesGeoJson from '@/components/molecules/SwitchStoreModalBox/usa-states.json'
-import {MAP_BOX_SETTINGS} from '@/config'
-import {convertToTitleCase} from '@/lib/common'
 import * as turf from '@turf/turf'
-import usStateConverter from 'us-state-converter'
 
 /**
  * Get the opening and closing hours for the current day of the week.
@@ -75,23 +71,6 @@ export const findStore = (initialStores, slug) => {
 export const filterStores = (initialStores, currentStore, geoState) => {
   const storesByState = initialStores.filter((store) => store.nap.state.slug == geoState && store.location_status === 'Open')
   return storesByState.filter((store) => store.slug !== currentStore?.slug)
-}
-
-/**
- * Get the GeoJSON data for a specific U.S. state.
- * @param  {string}      state - The name of the U.S. state (e.g., "new-jersey").
- * @return {object|null}       - The GeoJSON data for the state or null if not found.
- */
-export const getStateGeoJson = (state) => {
-  const stateGeoJson = usStatesGeoJson.features.find((feature) => feature.id === usStateConverter.abbr(convertToTitleCase(state)))
-  return stateGeoJson
-}
-
-export const getReverseGeoCoding = async (longitude, latitude) => {
-  const reverseGeoCodeApi = `https://api.mapbox.com/search/geocode/v6/reverse?longitude=${longitude}&latitude=${latitude}&access_token=${MAP_BOX_SETTINGS.MAPBOX_TOKEN}`
-  const response = await fetch(reverseGeoCodeApi)
-  const reverseGeoCoding = await response.json()
-  return reverseGeoCoding
 }
 
 export const getSuggessions = async (q, access_token, session_token, bbox) => {
