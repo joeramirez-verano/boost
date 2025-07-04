@@ -1,33 +1,118 @@
 /* Jost Fonts */
 @font-face {
-  font-family: 'Jost';
-  src: url('../fonts/Jost-Black.ttf') format('truetype');
-  font-weight: 900;
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Regular.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
-
 @font-face {
-  font-family: 'Jost';
-  src: url('../fonts/Jost-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Medium.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
-
 @font-face {
-  font-family: 'Jost';
-  src: url('../fonts/Jost-Bold.ttf') format('truetype');
+  font-family: 'Afacad';
+  src: url('/font/Afacad-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
-
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 /* Add the rest of the Jost fonts... */
 
 /* Afacad Fonts */
 @font-face {
   font-family: 'Afacad';
-  src: url('../fonts/Afacad-Regular.ttf') format('truetype');
+  src: url('/font/Afacad-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Afacad';
+  src: url('/font/Afacad-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
 }
 
 /* Optional CSS Variables */

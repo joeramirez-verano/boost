@@ -5,7 +5,7 @@ import "../app/globals.css";
 import './styles/fonts.css'
 
 import Header from "@/components/HeaderZld/index";
-import Footer from "../components/molecules/Footer/ZLD/index";
+import Footer from "@/components/molecules/Footer/ZLD/index";
 
 // Your custom domain
 const CUSTOM_DOMAIN = "https://zenleafdispensaries.com";
