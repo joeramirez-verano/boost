@@ -6,7 +6,7 @@ import {ChevronDownIcon} from '@heroicons/react/24/solid'
 // import {sendGTMEvent} from '@next/third-parties/google'
 
 const StoreSwitcherButton = () => {
-  const {stateValues} = appController.useState(['myLocation', 'storeLocation', 'deliveryAddress'])
+  const stateValues = appController.useState(['myLocation', 'storeLocation', 'deliveryAddress'])
   const {myLocation, storeLocation, deliveryAddress} = stateValues
   const orderType = myLocation?.orderType
 

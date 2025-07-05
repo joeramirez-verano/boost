@@ -10,7 +10,7 @@ import {usePlatformDetection} from '@/components/common/hooks/usePlatformDetecti
 export default function FooterAppButtons() {
   const {isIOS, isAndroidChrome, isMobile} = usePlatformDetection()
   const {myLocation} = appController.useState(['myLocation'])
-  const geoState = myLocation.get({noproxy: true})?.geoState
+  const geoState = myLocation?.geoState
   const sweedStates = ['florida', 'pennsylvania', 'arizona', 'west-virginia', 'nevada']
 
   if (!isMobile || !sweedStates.includes(geoState)) return null

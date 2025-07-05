@@ -2,9 +2,8 @@ import { appController } from '@/components/common/hooks/hookstate/appController
 import { useLocation } from 'react-router-dom'
 
 const ShoppingCart = () => {
-  const { stateValues } = appController.useState(['myLocation', 'storeLocation'])
+  const  stateValues  = appController.useState(['myLocation', 'storeLocation'])
   const { myLocation, storeLocation } = stateValues
-  const locationSlug = storeLocation?.slug ?? myLocation?.id
 
   const location = useLocation()
   const pathname = location.pathname

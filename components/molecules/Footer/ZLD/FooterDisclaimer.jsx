@@ -75,7 +75,8 @@ const getContentByState = (state) => {
   return Content ? <>{Content}</> : <></>
 }
 const FooterDisclaimer = () => {
-  const {stateValues} = appController.useState(['myLocation', 'currentLocation'])
+  const stateValues = appController.useState(['myLocation', 'currentLocation'])
+
   let Default = (
     <>
       <span className="order-2 block">

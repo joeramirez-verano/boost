@@ -1,7 +1,7 @@
 import {appController} from '@/components/common/hooks/hookstate/appController'
 
 const StoreTypeSwitcher = () => {
-  const {stateValues} = appController.useState(['myLocation', 'storeLocation'])
+  const stateValues = appController.useState(['myLocation', 'storeLocation'])
   const {myLocation, storeLocation} = stateValues
   const storePreference = myLocation?.storeType
   const locationSlug = myLocation?.id

@@ -11,7 +11,7 @@ import ShoppingCart from '@/components/molecules/Header/ZLD/ShoppingCart'
 import Logo from '@/components/atoms/Logo'
 
 const NavBar = () => {
-  const {stateValues} = appController.useState(['myLocation'])
+  const stateValues = appController.useState(['myLocation'])
   const {myLocation} = stateValues
   const isDelivery = myLocation?.orderType === 'delivery'
   return (

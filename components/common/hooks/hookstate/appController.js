@@ -6,10 +6,10 @@ import getCurrentState from '@/functions/getCurrentState'
 import {getStoreMenuTypeAndUrl} from '@/functions/getMenuUrl'
 import getStateBySlug from '@/functions/getStateBySlug'
 import Cookies from 'js-cookie'
-import {hookStateController} from './hookStateController'
-import {appInitialState, appState} from './initialStates'
+import { StateController } from '@/src/store/stateController'
+import {appInitialState} from './initialStates'
 
-const cookies = [
+const COOKIES_CONFIG = [
   {stateKey: 'myLocation', cookieKey: 'myLocation'},
   {stateKey: 'passedAgeGate', cookieKey: 'resp-agev-age-verification-passed'},
   {stateKey: 'passedAgeGate', cookieKey: 'swa_Common/isAgeChecked'},
@@ -26,228 +26,237 @@ const cookies = [
   {stateKey: 'closedInstallAppBanner', cookieKey: 'closedInstallAppBanner'}
 ]
 
-// An object containing handlers for specific state keys.
-const subscribeHandlers = {
-  myLocation: async (state) => {
-    const storeLocations = state.allStoreLocations.get({noproxy: true})
-    const slug = state.myLocation.get({noproxy: true})?.id
-    if (slug && storeLocations) {
-      const currentStoreLocation = findStore(storeLocations, slug)
-      if (currentStoreLocation) state.merge({storeLocation: currentStoreLocation})
-    }
+export class AppController extends StateController {
+  isConnecticut = false;
 
-    if (CURRENT_BRAND === BRAND.ZLD) {
-      const geoState = state['myLocation'].get({noproxy: true})?.geoState
-      if (geoState) {
-        const geoStateData = await getStateBySlug(geoState)
-        state.merge({callId: geoStateData?.state_integrations?.phoneNumber, liveChat: geoStateData?.state_integrations?.liveChatId})
-      }
-      if (state.passedAgeGate.get({noproxy: true})) {
-        if (geoState === 'connecticut') {
-          sessionStorage.setItem('passedAgeGate', true)
-          Cookies.remove('resp-agev-age-verification-passed')
-          Cookies.remove('swa_Common/isAgeChecked')
-        } else {
-          Cookies.set('resp-agev-age-verification-passed', true, {expires: 30})
-          document.cookie = `swa_Common/isAgeChecked=${true}; path=/;`
-          sessionStorage.removeItem('passedAgeGate')
-        }
-      }
-    }
+  constructor() {
+    super(appInitialState);
+    this.bindMethods(this);
+    this.autoSubscribeOnMethods(this);
   }
-}
 
-const cookieControllerHandler = (state) => {
-  let isConnecticut = false
-  const initialize = async () => {
-    let initialState = {}
-
-    const currentState = await getCurrentState()
-    isConnecticut = currentState.state === 'connecticut'
+  async initialize() {
+    let initialState = {};
+    const currentState = await getCurrentState();
+    this.isConnecticut = currentState.state === 'connecticut';
 
     if (currentState.aroundLatLng) {
-      initialState.aroundLatLng = currentState.aroundLatLng
+      initialState.aroundLatLng = currentState.aroundLatLng;
     }
     if (currentState.state) {
-      initialState.aroundLatLngGeoState = currentState.state
+      initialState.aroundLatLngGeoState = currentState.state;
     }
     if (!currentState.aroundLatLng) {
       navigator.geolocation.watchPosition(
         (pos) => {
-          update({aroundLatLng: `${pos.coords.latitude}, ${pos.coords.longitude}`})
+          this.updateState({aroundLatLng: `${pos.coords.latitude}, ${pos.coords.longitude}`});
         },
         async () => {
           try {
-            const {state, aroundLatLng} = await getCurrentState()
-
-            aroundLatLng && update({aroundLatLng: aroundLatLng})
-            state && update({aroundLatLngGeoState: state})
+            const {state, aroundLatLng} = await getCurrentState();
+            aroundLatLng && this.updateState({aroundLatLng});
+            state && this.updateState({aroundLatLngGeoState: state});
           } catch (err) {
             //
           }
         }
-      )
+      );
     }
+
     // Set cookies into initial state
-    cookies.forEach((cookie) => {
+    COOKIES_CONFIG.forEach((cookie) => {
       if (cookie.cookieKey === 'resp-agev-age-verification-passed' || cookie.cookieKey === 'swa_Common/isAgeChecked') {
-        return //skip
+        return; //skip
       }
 
       if (Cookies.get(cookie.cookieKey) && Cookies.get(cookie.cookieKey) !== 'null') {
-        initialState[cookie.stateKey] = Cookies.get(cookie.cookieKey)
+        initialState[cookie.stateKey] = Cookies.get(cookie.cookieKey);
         if (
           initialState[cookie.stateKey] &&
           ((initialState[cookie.stateKey].includes('{') && initialState[cookie.stateKey].includes('}')) ||
             (initialState[cookie.stateKey].includes('[') && initialState[cookie.stateKey].includes(']')))
         )
-          initialState[cookie.stateKey] = JSON.parse(initialState[cookie.stateKey])
+          initialState[cookie.stateKey] = JSON.parse(initialState[cookie.stateKey]);
       }
-    })
+    });
 
     if (CURRENT_BRAND === BRAND.ZLD) {
-      // use referrer when a user coming from sweed store menu to main site
-      const refer = document.referrer
-      //For connecticut, set the passedAgeGate state to true only if the session key is true or the refer is https://zenleafdispensaries.com
-      if (isConnecticut || initialState.myLocation?.geoState === 'connecticut') {
-        if (sessionStorage.getItem('passedAgeGate') === 'true' || refer.includes(window.location.host)) initialState.passedAgeGate = true
-        else initialState.passedAgeGate = false
+      const refer = document.referrer;
+      if (this.isConnecticut || initialState.myLocation?.geoState === 'connecticut') {
+        if (sessionStorage.getItem('passedAgeGate') === 'true' || refer.includes(window.location.host)) 
+          initialState.passedAgeGate = true;
+        else 
+          initialState.passedAgeGate = false;
       } else {
-        //For all other states, set the passedAgeGate state to true only if our ageGate cookie is true or the sweed's ageGate cookie is passed
-        if (Cookies.get('resp-agev-age-verification-passed') === 'true' || Cookies.get('swa_Common/isAgeChecked') === 'true') initialState.passedAgeGate = true
-        else initialState.passedAgeGate = false
+        if (Cookies.get('resp-agev-age-verification-passed') === 'true' || Cookies.get('swa_Common/isAgeChecked') === 'true') 
+          initialState.passedAgeGate = true;
+        else 
+          initialState.passedAgeGate = false;
       }
     } else {
-      if (Cookies.get('resp-agev-age-verification-passed') === 'true' || Cookies.get('swa_Common/isAgeChecked') === 'true') initialState.passedAgeGate = true
-      else initialState.passedAgeGate = false
+      if (Cookies.get('resp-agev-age-verification-passed') === 'true' || Cookies.get('swa_Common/isAgeChecked') === 'true') 
+        initialState.passedAgeGate = true;
+      else 
+        initialState.passedAgeGate = false;
     }
-    state.merge(initialState)
-    subscribe(Object.keys(initialState))
+
+    this.updateState(initialState);
+    this.subscribeToStateChanges(Object.keys(initialState));
   }
 
-  const update = (partialState) => {
-    const myLocation = state.myLocation.get({noproxy: true})
-    const geoState = myLocation?.geoState
-    const keys = Object.keys(partialState)
+ handleMyLocationChange = async () => {
+    const storeLocations = this.getValue('allStoreLocations');
+    const myLocation = this.getValue('myLocation');
+    const slug = myLocation?.id;
+
+    if (slug && storeLocations) {
+      const currentStoreLocation = findStore(storeLocations, slug);
+      if (currentStoreLocation) this.updateState({storeLocation: currentStoreLocation});
+    }
+
+    if (CURRENT_BRAND === BRAND.ZLD) {
+      const geoState = myLocation?.geoState;
+      if (geoState) {
+        const geoStateData = await getStateBySlug(geoState);
+        this.updateState({
+          callId: geoStateData?.state_integrations?.phoneNumber, 
+          liveChat: geoStateData?.state_integrations?.liveChatId
+        });
+      }
+      if (this.getValue('passedAgeGate')) {
+        if (geoState === 'connecticut') {
+          sessionStorage.setItem('passedAgeGate', true);
+          Cookies.remove('resp-agev-age-verification-passed');
+          Cookies.remove('swa_Common/isAgeChecked');
+        } else {
+          Cookies.set('resp-agev-age-verification-passed', true, {expires: 30});
+          document.cookie = `swa_Common/isAgeChecked=${true}; path=/;`;
+          sessionStorage.removeItem('passedAgeGate');
+        }
+      }
+    }
+  }
+
+  subscribeToStateChanges = (keys) => {
     keys.forEach((key) => {
-      const cookieMeta = cookies.find((c) => c.stateKey === key)
+      if (key === 'myLocation') {
+        this.handleMyLocationChange();
+      }
+    });
+  }
+
+  updateState = (partialState) => {
+    const myLocation = this.getValue('myLocation');
+    const geoState = myLocation?.geoState;
+    const keys = Object.keys(partialState);
+
+    keys.forEach((key) => {
+      const cookieMeta = COOKIES_CONFIG.find((c) => c.stateKey === key);
       if (cookieMeta) {
         if (cookieMeta.stateKey === 'passedAgeGate') {
-          // Hanlde passedAgeGate state updation
-          // 1) For connecticut, set the passedAgeGate in sessionStorage
-          // 2) For all other states, set the resp-agev-age-verification-passed and swa_Common/isAgeChecked cookies
-          if (isConnecticut || geoState === 'connecticut') {
-            sessionStorage.setItem('passedAgeGate', partialState[key])
-            Cookies.remove('resp-agev-age-verification-passed')
-            Cookies.remove('swa_Common/isAgeChecked')
+          if (this.isConnecticut || geoState === 'connecticut') {
+            sessionStorage.setItem('passedAgeGate', partialState[key]);
+            Cookies.remove('resp-agev-age-verification-passed');
+            Cookies.remove('swa_Common/isAgeChecked');
           } else {
-            Cookies.set('resp-agev-age-verification-passed', partialState[key], {expires: 365})
-            document.cookie = `swa_Common/isAgeChecked=${partialState[key]}; path=/;`
-            sessionStorage.removeItem('passedAgeGate')
+            Cookies.set('resp-agev-age-verification-passed', partialState[key], {expires: 365});
+            document.cookie = `swa_Common/isAgeChecked=${partialState[key]}; path=/;`;
+            sessionStorage.removeItem('passedAgeGate');
           }
-          return
+          return;
         }
 
         if (typeof partialState[key] === 'object' && partialState[key] != null) {
-          Cookies.set(cookieMeta.cookieKey, JSON.stringify(partialState[key]), {expires: 365})
+          Cookies.set(cookieMeta.cookieKey, JSON.stringify(partialState[key]), {expires: 365});
         } else if (key === 'closedInstallAppBanner') {
-          Cookies.set(cookieMeta.cookieKey, partialState[key], {expires: 30})
+          Cookies.set(cookieMeta.cookieKey, partialState[key], {expires: 30});
         } else {
-          Cookies.set(cookieMeta.cookieKey, partialState[key], {expires: 365})
+          Cookies.set(cookieMeta.cookieKey, partialState[key], {expires: 365});
         }
       }
-    })
-    state.merge(partialState)
-    subscribe(keys)
+    });
+
+    super.updateState(partialState);
+    this.subscribeToStateChanges(keys);
   }
 
-  const partialUpdateKey = (key, obj) => {
-    const prevState = state[key].get({noproxy: true})
-    return update({[key]: {...prevState, ...obj}})
+  partialUpdateKey = (key, obj) => {
+    const prevState = this.getValue(key);
+    return this.updateState({[key]: {...prevState, ...obj}});
   }
 
-  // Subscribes to state changes based on provided keys and executes associated handler functions.
-  const subscribe = (keys) => {
-    keys.forEach((key) => {
-      if (subscribeHandlers[key]) {
-        subscribeHandlers[key](state)
-      }
-    })
-  }
-  const menuLocationRouter = (varient = 'stateSpecific') => {
-    Cookies.remove('last_store')
-    let storeLocations = state.allStoreLocations.get({noproxy: true})
-    const aroundLatLng = state.aroundLatLng.get({noproxy: true})
-    const myLocation = state.myLocation.get({noproxy: true})
-    let id = myLocation?.id
-    let geoState = myLocation?.geoState
-    let aroundLatLngGeoState = state.aroundLatLngGeoState.get({noproxy: true})
-    let storeType = myLocation?.storeType
-    let menuUrl = '/store-locator'
+  menuLocationRouter = (variant = 'stateSpecific') => {
+    Cookies.remove('last_store');
+    let storeLocations = this.getValue('allStoreLocations');
+    const aroundLatLng = this.getValue('aroundLatLng');
+    const myLocation = this.getValue('myLocation');
+    let id = myLocation?.id;
+    let geoState = myLocation?.geoState;
+    let aroundLatLngGeoState = this.getValue('aroundLatLngGeoState');
+    let storeType = myLocation?.storeType;
+    let menuUrl = '/store-locator';
 
-    // Extract & process brand search params to go to that brand menu page
-    let searchParams = new URLSearchParams(window.location.search)
-    let brandParam = searchParams.get('brand')
+    // Extract & process brand search params
+    let searchParams = new URLSearchParams(window.location.search);
+    let brandParam = searchParams.get('brand');
     if (brandParam) {
-      let brand
+      let brand;
       if (geoState) {
-        brand = brandsInState[geoState]?.find((brand) => brand.slug === brandParam)
+        brand = brandsInState[geoState]?.find((brand) => brand.slug === brandParam);
       } else if (aroundLatLngGeoState) {
-        brand = brandsInState[aroundLatLngGeoState]?.find((brand) => brand.slug === brandParam)
-        geoState = aroundLatLngGeoState
-        id = null
+        brand = brandsInState[aroundLatLngGeoState]?.find((brand) => brand.slug === brandParam);
+        geoState = aroundLatLngGeoState;
+        id = null;
         if (!brand) {
-          const sortedStores = sortStoresByMiles(storeLocations, aroundLatLng)
-          // Iterate through sorted store locations to find a brand match
+          const sortedStores = sortStoresByMiles(storeLocations, aroundLatLng);
           for (const store of sortedStores) {
-            const stateBrands = brandsInState[store.state?.slug]
+            const stateBrands = brandsInState[store.state?.slug];
             if (stateBrands) {
-              brand = stateBrands.find((brand) => brand.slug === brandParam)
+              brand = stateBrands.find((brand) => brand.slug === brandParam);
               if (brand) {
-                geoState = store.state?.slug
-                id = null
-                break // If a match is found, exit the loop
+                geoState = store.state?.slug;
+                id = null;
+                break;
               }
             }
           }
         }
       }
       if (!brand) {
-        const filteredBrandAndState = findBrandStateBySlug(brandParam)
-        geoState = filteredBrandAndState.state
-        id = null
-        brand = filteredBrandAndState.brand
+        const filteredBrandAndState = findBrandStateBySlug(brandParam);
+        geoState = filteredBrandAndState.state;
+        id = null;
+        brand = filteredBrandAndState.brand;
       }
       if (brand) {
-        const url = new URL(brand.url, STORE_URL)
-        const newSearchParams = new URLSearchParams(url.search)
-        // Remove 'brand' from existing searchParams
-        searchParams.delete('brand')
-        // Append new search parameters to the existing ones
+        const url = new URL(brand.url, STORE_URL);
+        const newSearchParams = new URLSearchParams(url.search);
+        searchParams.delete('brand');
         for (const [key, value] of newSearchParams.entries()) {
-          searchParams.set(key, value) // Use .set() to update or add the new search params
+          searchParams.set(key, value);
         }
       }
     }
 
     if (id) {
       if (CURRENT_BRAND === BRAND.MUV || storeType === 'sweed') {
-        menuUrl = BRAND_DATA.medicalMenuSweedStates?.includes(geoState) ? `/locations/${id}/medical-menu` : `/locations/${id}/menu`
+        menuUrl = BRAND_DATA.medicalMenuSweedStates?.includes(geoState) ? `/locations/${id}/medical-menu` : `/locations/${id}/menu`;
       } else {
-        menuUrl = `/locations/${id}/${storeType}-menu`
+        menuUrl = `/locations/${id}/${storeType}-menu`;
       }
     } else if (aroundLatLng) {
-      if (varient === 'stateSpecific' && geoState && geoState !== 'other') {
-        storeLocations = filterStores(storeLocations, null, geoState)
+      if (variant === 'stateSpecific' && geoState && geoState !== 'other') {
+        storeLocations = filterStores(storeLocations, null, geoState);
       }
-      const sortedStores = sortStoresByMiles(storeLocations, aroundLatLng)
-      const nearestStoreLocation = sortedStores[0]
-      const {storeType: menutype, storeMenuUrl} = getStoreMenuTypeAndUrl(nearestStoreLocation)
-      id = nearestStoreLocation?.slug
-      geoState = geoState === 'other' ? geoState : nearestStoreLocation?.state?.slug
-      storeType = menutype
-      menuUrl = storeMenuUrl
-      const partialState = {
+      const sortedStores = sortStoresByMiles(storeLocations, aroundLatLng);
+      const nearestStoreLocation = sortedStores[0];
+      const {storeType: menutype, storeMenuUrl} = getStoreMenuTypeAndUrl(nearestStoreLocation);
+      id = nearestStoreLocation?.slug;
+      geoState = geoState === 'other' ? geoState : nearestStoreLocation?.state?.slug;
+      storeType = menutype;
+      menuUrl = storeMenuUrl;
+      
+      this.updateState({
         myLocation: {
           id,
           idType: 'SLUG',
@@ -255,31 +264,21 @@ const cookieControllerHandler = (state) => {
           orderType: 'pickup',
           geoState
         }
-      }
-      update(partialState)
+      });
     }
 
     if (id) {
-      let path = ''
+      let path = '';
       if (storeType === 'sweed' || CURRENT_BRAND === BRAND.MUV) {
-        path = searchParams.get('path') ? '/' + searchParams.get('path') : '' // Get the value of 'path' from search parameters
-        searchParams.delete('path') // Remove 'path' from search parameters list
+        path = searchParams.get('path') ? '/' + searchParams.get('path') : '';
+        searchParams.delete('path');
       }
-      const searchParamString = searchParams.size > 0 ? '?' + searchParams.toString() : '' // Convert updated search parameters to string
-      menuUrl = `${menuUrl}${path}${searchParamString}`
+      const searchParamString = searchParams.size > 0 ? '?' + searchParams.toString() : '';
+      menuUrl = `${menuUrl}${path}${searchParamString}`;
     }
-    return menuUrl
-  }
-
-  return {
-    initialize,
-    update,
-    partialUpdateKey,
-    menuLocationRouter
+    return menuUrl;
   }
 }
 
-export const appController = {
-  ...hookStateController(appState, appInitialState),
-  ...cookieControllerHandler(appState)
-}
+export const appController = new AppController();
+

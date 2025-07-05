@@ -2,7 +2,7 @@ import {appController} from '@/components/common/hooks/hookstate/appController'
 import states from 'us-state-converter'
 import MenuButton from './MenuButton'
 const DiscountsButton = ({isMobile, closeMenu}) => {
-  const {stateValues} = appController.useState(['myLocation', 'storeLocation'])
+  const stateValues = appController.useState(['myLocation', 'storeLocation'])
   const {myLocation, storeLocation} = stateValues
   const geoState = myLocation?.geoState
   let href = '/discounts'

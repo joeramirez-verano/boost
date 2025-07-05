@@ -6,7 +6,7 @@ import StoreSwitcherButton from './storeSwitcherButton'
 
 const LocationBar = () => {
   // COMPOENNTS-3968 set the myLocation cookie to show location bar if no store is selected
-  const {storeLocation, myLocation, stateValues} = appController.useState(['myLocation', 'storeLocation', 'deliveryAddress'])
+  const stateValues = appController.useState(['myLocation', 'storeLocation', 'deliveryAddress'])
 
   // useEffect(() => {
   //   appController.menuLocationRouter('stateSpecific')

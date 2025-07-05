@@ -2,7 +2,7 @@ import {appController} from '@/components/common/hooks/hookstate/appController'
 const statesWithDelivery = ['new-jersey']
 
 const DeliveryButton = ({isMobile, isDark = true, closeMenu}) => {
-  const {stateValues} = appController.useState(['myLocation'])
+  const stateValues = appController.useState(['myLocation'])
   const {myLocation} = stateValues
   const geoState = myLocation?.geoState
   if (!geoState || !statesWithDelivery.includes(geoState)) {

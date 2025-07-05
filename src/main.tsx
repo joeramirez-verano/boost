@@ -6,6 +6,7 @@ import './styles/fonts.css'
 
 import Header from "@/components/HeaderZld/index";
 import Footer from "@/components/molecules/Footer/ZLD/index";
+import { JotaiProvider } from "./jotai-provider";
 
 // Your custom domain
 const CUSTOM_DOMAIN = "https://zenleafdispensaries.com";
@@ -25,7 +26,9 @@ function rewriteAllLinksToCustomDomain() {
 ReactDOM.createRoot(document.getElementById("header")!).render(
   <React.StrictMode>
     <BrowserRouter>
-       <Header />
+      <JotaiProvider>
+        <Header />
+      </JotaiProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
@@ -33,7 +36,9 @@ ReactDOM.createRoot(document.getElementById("header")!).render(
 ReactDOM.createRoot(document.getElementById("footer")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Footer />
+      <JotaiProvider>
+        <Footer />
+      </JotaiProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

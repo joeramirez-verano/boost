@@ -1,6 +1,6 @@
 import {appController} from '../../../common/hooks/hookstate/appController'
 const CallButton = ({isMobile}) => {
-  const {stateValues} = appController.useState(['callId'])
+  const stateValues = appController.useState(['callId'])
   const phone = stateValues.callId
   if (!phone) return null
 

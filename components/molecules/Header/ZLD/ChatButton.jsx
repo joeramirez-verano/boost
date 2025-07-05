@@ -2,7 +2,7 @@
 import {appController} from '../../../common/hooks/hookstate/appController'
 import {useRef} from 'react'
 const ChatButton = ({isMobile}) => {
-  const {stateValues} = appController.useState(['liveChat'])
+  const stateValues = appController.useState(['liveChat'])
 
   const liveChatId = stateValues.liveChat
   const ref = useRef()
