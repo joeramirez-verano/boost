@@ -1,4 +1,4 @@
-if (window.location.href.includes('display-new-age-gate') || window.location.href.includes('localhost')) {
+if (window.location.href.includes('display-new-age-gate') || window.location.href.includes('localhost') || window.location.href.includes('boost') || window.location.href.includes('menu.zenleafdispensaries.com')) {
 
 	console.log('global.js loaded');
 
@@ -258,7 +258,7 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 
 				verano.generateSessionId();
 
-				fetch(`${verano.environmentUrl}/global-age-gate${!verano.localhost ? '.min' : ''}.js`).then(async response => {
+				fetch(`${verano.environmentUrl}/global-age-gate.js`).then(async response => {
 					
 					if (!response.ok) {
 						throw new Error('Network response was not ok');
