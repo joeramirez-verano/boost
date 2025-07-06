@@ -42,7 +42,6 @@ ReactDOM.createRoot(document.getElementById("footer")!).render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
 // Rewrite all links after DOM is loaded
 document.addEventListener("DOMContentLoaded", rewriteAllLinksToCustomDomain);
 

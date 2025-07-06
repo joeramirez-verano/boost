@@ -5,6 +5,17 @@
     <link rel="icon" href="https://zenleafdispensaries.com/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Medical & Recreational Cannabis Dispensaries | Zen Leaf</title>
+    <script id="page-hydrated" strategy="afterInteractive">
+      // this sets a variable when the next.js page is hydrated
+      window.__sw_hydrate = {
+        ready: true,
+        onReady: function () {
+          console.log("page-hydrated");
+        }
+      }
+     </script>
+
+    <script src="/js-scripts/global.js"></script>
   </head>
   <body>
     <!-- Static header HTML for SEO, hidden immediately with inline CSS -->
