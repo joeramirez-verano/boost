@@ -3,7 +3,7 @@ import states from 'us-state-converter'
 import MenuButton from './MenuButton'
 
 const RewardsButton = ({isMobile, closeMenu}) => {
-  const {stateValues} = appController.useState(['myLocation'])
+  const stateValues = appController.useState(['myLocation'])
   const {myLocation} = stateValues
   const geoState = myLocation?.geoState
   let href = '/rewards'

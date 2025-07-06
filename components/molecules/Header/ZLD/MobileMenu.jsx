@@ -9,7 +9,7 @@ import MenuDropdown from './MenuDropdown'
 import RewardsButton from './RewardsButton'
 
 const MobileMenu = () => {
-  const {stateValues} = appController.useState(['myLocation', 'storeLocation', 'currentLocation'])
+  const stateValues = appController.useState(['myLocation', 'storeLocation', 'currentLocation'])
   const {storeLocation} = stateValues
   return (
     <div className="relative">

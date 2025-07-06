@@ -5,7 +5,7 @@ import {ChevronDownIcon} from '@heroicons/react/24/solid'
 import {Fragment} from 'react'
 import MenuButton from './MenuButton'
 const MenuDropdown = ({isMobile, closeMenu}) => {
-  const {stateValues} = appController.useState(['myLocation', 'storeLocation'])
+  const stateValues = appController.useState(['myLocation', 'storeLocation'])
   const {myLocation, storeLocation} = stateValues
 
   const text = isMobile ? 'Menu' : 'Menu'
