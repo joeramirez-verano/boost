@@ -6,8 +6,38 @@ import getCurrentState from '@/functions/getCurrentState'
 import {getStoreMenuTypeAndUrl} from '@/functions/getMenuUrl'
 import getStateBySlug from '@/functions/getStateBySlug'
 import Cookies from 'js-cookie'
-import { StateController } from '@/src/store/stateController'
-import {appInitialState} from './initialStates'
+import { StateController } from './stateController'
+
+export const appInitialState = {
+  liveChat: CURRENT_BRAND === BRAND.MUV ? 'HtuqVlM5pkedKYIghq6XWw' : '',
+  callId: null,
+  aroundLatLng: null,
+  aroundLatLngGeoState: null,
+
+  currentLocation: {},
+  myLocation: null,
+  storeLocation: null,
+  allStoreLocations: null,
+  sweedStoreInfolist: null,
+
+  passedAgeGate: Cookies.get('swa_Common/isAgseChecked') ?? Cookies.get('resp-agev-age-verification-passed'),
+  hideDeliveryModal: null,
+  stateModalBox: null,
+  storeTypeModal: null,
+  orderTypeModal: null,
+
+  deliveryAddress: '',
+  deliverySecondaryAddress: '',
+  deliveryLatitude: null,
+  deliveryLongitude: null,
+  mapZoom: null,
+  isDesktop: false,
+
+  showMobileStrainFilter: false,
+
+  closedInstallAppBanner: Cookies.get('closedInstallAppBanner') ?? false
+}
+
 
 const COOKIES_CONFIG = [
   {stateKey: 'myLocation', cookieKey: 'myLocation'},

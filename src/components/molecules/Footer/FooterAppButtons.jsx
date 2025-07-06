@@ -1,8 +1,8 @@
 'use client'
 import AndroidAppButton from '@/components/atoms/AndroidAppButton'
 import IOSAppButton from '@/components/atoms/IOSAppButton'
-import {appController} from '@/components/common/hooks/hookstate/appController'
 import {usePlatformDetection} from '@/components/common/hooks/usePlatformDetection'
+import {appController} from '@/store/appController'
 
 /**
  *

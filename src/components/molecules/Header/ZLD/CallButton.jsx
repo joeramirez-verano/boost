@@ -1,4 +1,4 @@
-import {appController} from '../../../common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 const CallButton = ({isMobile}) => {
   const stateValues = appController.useState(['callId'])
   const phone = stateValues.callId

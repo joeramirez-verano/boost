@@ -1,5 +1,5 @@
 import {SwitcherSpinner} from '@/components/atoms/StoreSwitcherSpinner/index'
-import {appController} from '@/components/common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 import StoreTypeSwitcher from '@/components/molecules/Header/ZLD/StoreTypeSwitcher'
 import {BRAND, CURRENT_BRAND} from '@/config/constant'
 import StoreSwitcherButton from './storeSwitcherButton'

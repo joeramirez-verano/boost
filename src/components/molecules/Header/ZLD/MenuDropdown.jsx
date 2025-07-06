@@ -1,4 +1,4 @@
-import {appController} from '@/components/common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 import {getStoreInfoUrl, getStoreMenuTypeAndUrl} from '@/functions/getMenuUrl.js'
 import {Popover, PopoverButton, PopoverPanel, Transition} from '@headlessui/react'
 import {ChevronDownIcon} from '@heroicons/react/24/solid'

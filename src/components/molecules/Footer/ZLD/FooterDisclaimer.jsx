@@ -1,4 +1,4 @@
-import {appController} from '@/components/common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 
 /**
  * ZLD Footer Disclaimer Area

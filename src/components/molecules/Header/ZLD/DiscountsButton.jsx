@@ -1,4 +1,4 @@
-import {appController} from '@/components/common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 import states from 'us-state-converter'
 import MenuButton from './MenuButton'
 const DiscountsButton = ({isMobile, closeMenu}) => {

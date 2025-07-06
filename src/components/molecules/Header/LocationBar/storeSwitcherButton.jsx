@@ -1,6 +1,6 @@
 'use client'
 import Icon from '@/components/atoms/Icon'
-import {appController} from '@/components/common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 import {CURRENT_BRAND} from '@/config/constant'
 import {ChevronDownIcon} from '@heroicons/react/24/solid'
 // import {sendGTMEvent} from '@next/third-parties/google'

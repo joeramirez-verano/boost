@@ -1,5 +1,5 @@
 'use client'
-import {appController} from '../../../common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 import {useRef} from 'react'
 const ChatButton = ({isMobile}) => {
   const stateValues = appController.useState(['liveChat'])

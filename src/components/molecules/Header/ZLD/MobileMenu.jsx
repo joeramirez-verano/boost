@@ -1,5 +1,5 @@
 import Button from '@/components/atoms/Button'
-import {appController} from '@/components/common/hooks/hookstate/appController'
+import {appController} from '@/store/appController'
 import {BRAND_DATA} from '@/config/constant'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import ChatButton from './ChatButton'

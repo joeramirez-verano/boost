@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "../app/globals.css";
+import "./globals.css";
 import './styles/fonts.css'
 
-import Header from "@/components/HeaderZld/index";
-import Footer from "@/components/molecules/Footer/ZLD/index";
+import Header from "./components/HeaderZld/index";
+import Footer from "./components/molecules/Footer/ZLD/index";
 import { JotaiProvider } from "./jotai-provider";
 
 // Your custom domain
@@ -23,7 +23,7 @@ function rewriteAllLinksToCustomDomain() {
   });
 }
 
-ReactDOM.createRoot(document.getElementById("header")!).render(
+ReactDOM.createRoot(document.getElementById("header")).render(
   <React.StrictMode>
     <BrowserRouter>
       <JotaiProvider>
@@ -33,7 +33,7 @@ ReactDOM.createRoot(document.getElementById("header")!).render(
   </React.StrictMode>
 );
 
-ReactDOM.createRoot(document.getElementById("footer")!).render(
+ReactDOM.createRoot(document.getElementById("footer")).render(
   <React.StrictMode>
     <BrowserRouter>
       <JotaiProvider>
