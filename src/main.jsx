@@ -7,8 +7,7 @@ import './styles/fonts.css';
 import Header from "./components/HeaderZld/index";
 import Footer from "./components/molecules/Footer/ZLD/index";
 import { JotaiProvider } from './jotai-provider';
-import { appController } from './store/appController';
-import getLocations from "./functions/getLocations"
+import AppInitializer from "./AppInitializer";
 // Custom domain rewrite
 const CUSTOM_DOMAIN = "https://zenleafdispensaries.com";
 
@@ -24,17 +23,6 @@ function rewriteAllLinksToCustomDomain() {
 }
 
 async function initializeAppAndRender() {
-  try {
-    await appController.initialize(); // ✅ Ensure shared state is set before rendering
-    // appController.menuLocationRouter("state-specofic")
-    const locationsData = await getLocations()
-    let storeLocations = locationsData?.filter((hit) => hit._geoloc)
-    appController.updateState({allStoreLocations: storeLocations})
-
-  } catch (err) {
-    console.error("App initialization failed:", err);
-  }
-
   // Render Header
   const headerEl = document.getElementById("header");
   if (headerEl) {
@@ -43,6 +31,7 @@ async function initializeAppAndRender() {
         <BrowserRouter>
           <JotaiProvider>
             <Header />
+            <AppInitializer/>
           </JotaiProvider>
         </BrowserRouter>
       </React.StrictMode>
