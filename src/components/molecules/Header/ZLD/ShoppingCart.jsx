@@ -2,8 +2,7 @@ import { appController } from '@/store/appController'
 import { useLocation } from 'react-router-dom'
 
 const ShoppingCart = () => {
-  const  stateValues  = appController.useState(['myLocation', 'storeLocation'])
-  const { myLocation, storeLocation } = stateValues
+  const  { myLocation, storeLocation }   = appController.useState(['myLocation', 'storeLocation'])
 
   const location = useLocation()
   const pathname = location.pathname

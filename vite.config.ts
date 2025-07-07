@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 import path from 'path'
 import react from "@vitejs/plugin-react"
+import { Buffer } from 'buffer'
 
+const wpAhorization = Buffer.from(`${process.env.VITE_WORDPRESS_APPLICATION_USERNAME}:${process.env.wpAppPass}`).toString('base64')
 export default defineConfig({
   base: '/boost/',
   server: {
@@ -10,6 +12,7 @@ export default defineConfig({
   },
   define: {
     __API_BASE__: JSON.stringify('https://zenleafdispensaries.com/'),
+    __WP_AUTHORIZATION__:JSON.stringify(wpAhorization),
   },
     build: {
     outDir: 'dist',

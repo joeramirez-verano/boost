@@ -80,11 +80,11 @@ export default function Button({
 
   if (url) {
     return urlExternal ? (
-      <a href={url} className={buttonClassNames} id={id} aria-label={text} style={style} {...attributes} onClick={onClick}>
+      <a href={url} className={buttonClassNames || ""} id={id} aria-label={text} style={style} {...attributes} onClick={onClick}>
         {text ? text : [children]}
       </a>
     ) : (
-      <a href={url} className={buttonClassNames} id={id} aria-label={text} style={style} {...attributes} onClick={onClick}>
+      <a href={url} className={buttonClassNames || ""} id={id} aria-label={text} style={style} {...attributes} onClick={onClick}>
         <>{text ? text : [children]}</>
       </a>
     )
@@ -94,7 +94,7 @@ export default function Button({
       React.createElement(
         `${tag}`,
         {
-          className: buttonClassNames,
+          className: buttonClassNames || "",
           'aria-label': text,
           onClick,
           ...attributes,

@@ -4,9 +4,9 @@ import {ApolloClient, HttpLink, InMemoryCache} from '@apollo/client'
 import {useMemo} from 'react'
 
 // Define env vars.
-// export const wpApiUrlBase = process.env.NEXT_PUBLIC_WORDPRESS_URL?.replace(/\/?$/, '/') || '/'
+export const wpApiUrlBase = import.meta.env.VITE_PUBLIC_WORDPRESS_URL?.replace(/\/?$/, '/') || '/'
 // export const wpPreviewSecret = process.env.WORDPRESS_PREVIEW_SECRET
-// export const graphQlEndpoint = process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_ENDPOINT || 'graphql'
+export const graphQlEndpoint = import.meta.env.VITE_PUBLIC_WORDPRESS_GRAPHQL_ENDPOINT || 'graphql'
 // const wpAppUser = process.env.WORDPRESS_APPLICATION_USERNAME
 // const wpAppPass = process.env.WORDPRESS_APPLICATION_PASSWORD
 

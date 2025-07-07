@@ -169,7 +169,7 @@ export class AppController extends StateController {
 
   subscribeToStateChanges = (keys) => {
     keys.forEach((key) => {
-      if (key === 'myLocation') {
+      if (key === 'myLocation' || key === 'allStoreLocations') {
         this.handleMyLocationChange();
       }
     });
