@@ -88,7 +88,8 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 				date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 				expires = '; expires=' + date.toUTCString();
 			}
-			document.cookie = name + '=' + (value || '') + expires + '; path=/';
+			const domain = '.zenleafdispensaries.com';
+			document.cookie = `${name}=${value || ''}${expires}; path=/; domain=${domain}`;
 		},
 		removeCookie: function (name) {
 			// set the cookie with an expiration date in the past

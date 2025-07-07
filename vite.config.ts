@@ -11,8 +11,19 @@ export default defineConfig({
   define: {
     __API_BASE__: JSON.stringify('https://zenleafdispensaries.com/'),
   },
-  build: {
+    build: {
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/index-BT_039v4.js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+            return 'assets/index-Dm-0xfUw.css';
+          }
+          return 'assets/[name][extname]';
+        },
+      }
+    }
   },
   plugins: [react()],
   resolve: {
