@@ -1,6 +1,6 @@
 import React from 'react'
 import {useEffect} from 'react'
-import { appController } from '../../../store/appController'
+import { appController } from '@/store/appController'
 import { useLocation } from 'react-router-dom'
 /**
  * Muv Live Chat widget for live support (medchatapp.com/widget)

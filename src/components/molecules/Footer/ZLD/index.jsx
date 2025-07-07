@@ -1,5 +1,5 @@
 // import Chat from '../../Chat'
-import Chat from '../../Chat/Chat'
+import Chat from '@/components/molecules/Chat/Chat'
 import FooterAppButtons from '../FooterAppButtons'
 import BottomMenu from './BottomMenu'
 import FooterLogo from './FooterLogo'
