@@ -479,7 +479,6 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 				const isPassed = verano.getCookie('resp-agev-age-verification-passed');
 				if (isPassed && !ageGatePassedAlready) {
 				  ageGatePassedAlready = true;
-				  console.log('Detected age gate passed in global.js, dispatching event...');
 				  document.dispatchEvent(new CustomEvent('ageGateCompleted', { detail: { passed: true } }));
 				  clearInterval(interval); // stop checking once we detect
 				}
