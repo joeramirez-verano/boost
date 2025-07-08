@@ -26,7 +26,6 @@ export default function AndroidAppButton({id = 'android-app-button', altText = '
       width={173}
       height={49}
       className={`cursor-pointer rounded border border-white p-2 ${CURRENT_BRAND === BRAND.ZLD ? '' : ' invert'} ${className}`}
-      onClick={handlePrompt}
     />
   )
 }

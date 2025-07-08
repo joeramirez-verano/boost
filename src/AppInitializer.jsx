@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { appController } from './store/appController';
-import getLocations from "./functions/getLocations"
+import getLocations from "./functions/getLocations";
 
 const AppInitializer = () => {
   useEffect(() => {
@@ -18,7 +18,18 @@ const AppInitializer = () => {
       }
     };
 
-    initializeApp();
+    //  Listen for ageGateCompleted event
+    document.addEventListener('ageGateCompleted', initializeApp);
+
+    // On mount: check if cookie already exists
+    if (document.cookie.includes('resp-agev-age-verification-passed=true') || document.cookie.includes('swa_Common/isAgeChecked')) {
+      initializeApp();
+    }
+
+    // Cleanup listener on unmount
+    return () => {
+      document.removeEventListener('ageGateCompleted', initializeApp);
+    };
   }, []);
 
   return null;

@@ -470,6 +470,22 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 
 	// if the user is not passed the age gate
 	if (!verano.isPassedAgeGate()) {
+		//code to pull the gaegate cookie
+		(function() {
+			// Only run this watcher if the user hasn't yet passed the age gate
+			if (!verano.isPassedAgeGate()) {
+			  let ageGatePassedAlready = false;
+			  const interval = setInterval(() => {
+				const isPassed = verano.getCookie('resp-agev-age-verification-passed');
+				if (isPassed && !ageGatePassedAlready) {
+				  ageGatePassedAlready = true;
+				  console.log('Detected age gate passed in global.js, dispatching event...');
+				  document.dispatchEvent(new CustomEvent('ageGateCompleted', { detail: { passed: true } }));
+				  clearInterval(interval); // stop checking once we detect
+				}
+			  }, 500); // check every 500ms
+			}
+		  })();
 		// if the host is sweed
 		if (verano.host === 'Sweed' || verano.host === 'Jane') {
 

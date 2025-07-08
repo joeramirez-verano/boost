@@ -1,10 +1,13 @@
 import {appController} from '@/store/appController'
-const statesWithDelivery = ['new-jersey']
+import { BRAND_DATA } from '@/config/constant'
+import { BRAND } from '@/config/constant'
 
 const DeliveryButton = ({isMobile, isDark = true, closeMenu}) => {
+  const statesWithDelivery = BRAND_DATA[BRAND.ZLD]?.statesWithDelivery
   const stateValues = appController.useState(['myLocation'])
   const {myLocation} = stateValues
   const geoState = myLocation?.geoState
+
   if (!geoState || !statesWithDelivery.includes(geoState)) {
     return null
   } else {
