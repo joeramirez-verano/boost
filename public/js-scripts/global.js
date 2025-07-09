@@ -34,13 +34,13 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 		getEnvironmentUrl: function () {
 
 		if (window.location.href.includes("localhost")) {
-			return 'https://hd2khn60dbja2t5kvsal97g8a.js.wpenginepowered.com';
+			return 'https://zenleafdispensaries.com';
 			} else if (verano.host === "Sweed") {
-				return 'https://hd2khn60dbja2t5kvsal97g8a.js.wpenginepowered.com';
+				return 'https://zenleafdispensaries.com';
 			} else if (verano.host === "Jane") {
-				return 'https://hd2khn60dbja2t5kvsal97g8a.js.wpenginepowered.com';
+				return 'https://zenleafdispensaries.com';
 			} else if (verano.brand === "ZLD") {
-				return 'https://hd2khn60dbja2t5kvsal97g8a.js.wpenginepowered.com';
+				return 'https://zenleafdispensaries.com';
 			} else {
 				return '';
 			}
