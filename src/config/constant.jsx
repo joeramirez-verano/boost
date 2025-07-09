@@ -9392,6 +9392,173 @@ export const BRAND_DATA = {
           "lat": "39.979839",
           "lng": "-76.75189"
       }
-  ]
+  ],
+  statesCallAndChatIds:[
+    {
+        "__typename": "State",
+        "databaseId": 40,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-az@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": null,
+            "liveChatId": "tiDN3TknuUmvKT4BnThEsw",
+            "phoneNumber": "6029602273"
+        },
+        "slug": "arizona",
+        "stateId": 40,
+        "title": "Arizona"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 44,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-ct@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": "klaviyo-form-S4ECys",
+            "liveChatId": "q56SSpCgTky-sjUOCDxH2w",
+            "phoneNumber": "2035270936"
+        },
+        "slug": "connecticut",
+        "stateId": 44,
+        "title": "Connecticut"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 50,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-il@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": "klaviyo-form-Sw43Ls",
+            "liveChatId": "05fYhmYl5Eaa0287o9N2RQ",
+            "phoneNumber": "6189000936"
+        },
+        "slug": "illinois",
+        "stateId": 50,
+        "title": "Illinois"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 57,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-md@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": "klaviyo-form-U9sEBA",
+            "liveChatId": "uJk-5Dqhs0akfR-cXqvnWQ",
+            "phoneNumber": "2408443936"
+        },
+        "slug": "maryland",
+        "stateId": 57,
+        "title": "Maryland"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 58,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "Support-Ma@verano.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": "klaviyo-form-VzPgAm",
+            "liveChatId": "NIIY6O0bzUmJvXhSyv9EGg",
+            "phoneNumber": "7816180936"
+        },
+        "slug": "massachusetts",
+        "stateId": 58,
+        "title": "Massachusetts"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 59,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-mi@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": "klaviyo-form-X3xd6W",
+            "liveChatId": "RQSizlqGAUGLCXQdjVbrzQ",
+            "phoneNumber": "2693400936"
+        },
+        "slug": "michigan",
+        "stateId": 59,
+        "title": "Michigan"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 65,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-nv@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": null,
+            "liveChatId": "vhfV-s9XcU-cUlhEPU0jTw",
+            "phoneNumber": "7252560936"
+        },
+        "slug": "nevada",
+        "stateId": 65,
+        "title": "Nevada"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 67,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-nj@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": null,
+            "liveChatId": "gcUuMpODkE60K6Yvjs6quA",
+            "phoneNumber": "9086765936"
+        },
+        "slug": "new-jersey",
+        "stateId": 67,
+        "title": "New Jersey"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 72,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": null,
+            "fieldGroupName": "state_integrations",
+            "klavyio": "klaviyo-form-Ta3PJ6",
+            "liveChatId": null,
+            "phoneNumber": "513-757-0936"
+        },
+        "slug": "ohio",
+        "stateId": 72,
+        "title": "Ohio"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 75,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-pa@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": null,
+            "liveChatId": "_-Zdd7vT60yj2f0WtvFukQ",
+            "phoneNumber": "8144472936"
+        },
+        "slug": "pennsylvania",
+        "stateId": 75,
+        "title": "Pennsylvania"
+    },
+    {
+        "__typename": "State",
+        "databaseId": 85,
+        "state_integrations": {
+            "__typename": "State_StateIntegrations",
+            "emailAddress": "support-wv@zenleafdispensaries.com",
+            "fieldGroupName": "state_integrations",
+            "klavyio": null,
+            "liveChatId": "abaRddL23UWx9loAror5FA",
+            "phoneNumber": "3044700936"
+        },
+        "slug": "west-virginia",
+        "stateId": 85,
+        "title": "West Virginia"
+    }
+]
   }
 }
