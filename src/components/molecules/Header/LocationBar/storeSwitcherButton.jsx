@@ -23,10 +23,10 @@ const StoreSwitcherButton = () => {
       }
     })
 
-    appController.update({passedAgeGate: true})
+    appController.updateState({passedAgeGate: true})
 
     if (newStore.orderType === 'delivery') {
-      appController.update({
+      appController.updateState({
         deliveryAddress: userLocation.address,
         deliverySecondaryAddress: '',
         deliveryLatitude: userLocation.latitude,
