@@ -1,18 +1,15 @@
-import { useEffect } from 'react';
-import { appController } from './store/appController';
-import { BRAND,BRAND_DATA } from './config/constant';
+import {useEffect} from 'react';
+import getLocations from './functions/getLocations';
+import {appController} from './store/appController';
 
 const AppInitializer = () => {
   useEffect(() => {
     const initializeApp = async () => {
       try {
-        const [_] = await Promise.all([  //getlocation is commented as depends on wordpress key which will expose on githubpages
-          appController.initialize(),
-          // getLocations(),
-        ]);
+        const [_, allLocations] = await Promise.all([appController.initialize(), getLocations()]);
 
         // const storeLocations = locationsData?.filter(hit => hit._geoloc);
-        appController.updateState({ allStoreLocations: BRAND_DATA[BRAND.ZLD].allLocations });
+        appController.updateState({allStoreLocations: allLocations});
       } catch (err) {
         console.error("App initialization failed:", err);
       }

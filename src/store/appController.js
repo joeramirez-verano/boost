@@ -147,8 +147,8 @@ export class AppController extends StateController {
     if (CURRENT_BRAND === BRAND.ZLD) {
       const geoState = myLocation?.geoState;
       if (geoState) {
-        // const geoStateData = await getStateBySlug(geoState);
-        const geoStateData = BRAND_DATA[BRAND.ZLD].statesCallAndChatIds.find(stateObj=>stateObj.slug===geoState);
+        const geoStateData = await getStateBySlug(geoState);
+        // const geoStateData = BRAND_DATA[BRAND.ZLD].statesCallAndChatIds.find(stateObj=>stateObj.slug===geoState);
         this.updateState({
           callId: geoStateData?.state_integrations?.phoneNumber, 
           liveChat: geoStateData?.state_integrations?.liveChatId
