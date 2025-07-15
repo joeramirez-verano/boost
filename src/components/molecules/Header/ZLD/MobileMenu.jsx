@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from '@/components/atoms/Button'
 import {appController} from '@/store/appController'
 import {BRAND_DATA} from '@/config/constant'
@@ -8,17 +9,20 @@ import DiscountsButton from './DiscountsButton'
 import MenuDropdown from './MenuDropdown'
 import RewardsButton from './RewardsButton'
 
-const MobileMenu = () => {
+const MobileMenu = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const stateValues = appController.useState(['myLocation', 'storeLocation', 'currentLocation'])
   const {storeLocation} = stateValues
   return (
     <div className="relative">
-      <input type="checkbox" id="mobile-menu-checkbox" className="peer hidden" />
-
       {/* Overlay */}
-      <div className="pointer-events-none fixed inset-0 bg-black/50 opacity-0 transition-opacity duration-300 peer-checked:pointer-events-auto peer-checked:opacity-100" />
+      <div
+        className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-40 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
 
-      <aside className="fixed right-0 top-0 z-30 h-full w-full max-w-xl translate-x-full transform overflow-y-auto bg-white transition-transform duration-500 peer-checked:translate-x-0">
+      <aside
+        className={`fixed right-0 top-0 z-50 h-full w-full max-w-xl transform bg-white transition-transform duration-500 overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
         <div className="sticky top-0 z-10 bg-white px-4 py-4">
           <div className="mb-6 flex items-center justify-between">
             <a href="/" className="block max-w-[200px] flex-auto">
@@ -29,14 +33,17 @@ const MobileMenu = () => {
                 className="!relative block max-h-10 max-w-full"
               />
             </a>
-            <label htmlFor="mobile-menu-checkbox" className="flex size-10 cursor-pointer items-center justify-center rounded-[3px] border-2 border-black">
-              <span className="sr-only">Close main menu</span>
+            <button
+              className="flex size-10 cursor-pointer items-center justify-center rounded-[3px] border-2 border-black"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close main menu"
+            >
               <span className="inline-block size-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="sw_f126cc4b" role="presentation">
                   <path d="M5.53 4.47a.75.75 0 0 0-1.06 1.06L10.94 12l-6.47 6.47a.75.75 0 1 0 1.06 1.06L12 13.06l6.47 6.47a.75.75 0 1 0 1.06-1.06L13.06 12l6.47-6.47a.75.75 0 0 0-1.06-1.06L12 10.94 5.53 4.47Z" />
                 </svg>
               </span>
-            </label>
+            </button>
           </div>
         </div>
 

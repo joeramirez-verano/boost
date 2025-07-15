@@ -3,15 +3,17 @@ import Icon from '@/components/atoms/Icon'
 import {appController} from '@/store/appController'
 import {CURRENT_BRAND} from '@/config/constant'
 import {ChevronDownIcon} from '@heroicons/react/24/solid'
+import { getStoreMenuTypeAndUrl } from '../../../../functions/getMenuUrl'
+import { Link } from 'react-router-dom'
 // import {sendGTMEvent} from '@next/third-parties/google'
 
 const StoreSwitcherButton = () => {
   const stateValues = appController.useState(['myLocation', 'storeLocation', 'deliveryAddress'])
   const {myLocation, storeLocation, deliveryAddress} = stateValues
   const orderType = myLocation?.orderType
-
+  const {storeMenuUrl} = getStoreMenuTypeAndUrl(storeLocation)
   function switchTheStore(newStore, userLocation) {
-    appController.update({
+    appController.updateState({
       myLocation: {
         id: newStore.id,
         idType: newStore.idType,
@@ -74,6 +76,7 @@ const StoreSwitcherButton = () => {
 
   return (
     <>
+    <Link to={"https://zenleafdispensaries.com"+storeMenuUrl}>
       <div className={`${theme[CURRENT_BRAND].textColor} relative z-30 max-sm:flex-1 lg:inline-block`}>
         <button
           // onClick={() => {
@@ -94,6 +97,7 @@ const StoreSwitcherButton = () => {
           </div>
         </button>
       </div>
+      </Link>
     </>
   )
 }

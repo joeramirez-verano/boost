@@ -1,4 +1,5 @@
 'use client'
+import React, { useState } from 'react';
 import {appController} from '@/store/appController'
 import DeliveryButton from '@/components/molecules/Header/ZLD/DeliveryButton'
 import DiscountsButton from '@/components/molecules/Header/ZLD/DiscountsButton'
@@ -11,6 +12,7 @@ import ShoppingCart from '@/components/molecules/Header/ZLD/ShoppingCart'
 import Logo from '@/components/atoms/Logo'
 
 const NavBar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const stateValues = appController.useState(['myLocation'])
   const {myLocation} = stateValues
   const isDelivery = myLocation?.orderType === 'delivery'
@@ -44,9 +46,9 @@ const NavBar = () => {
               {/* <HeaderSearchBar /> */}
               <ShoppingCart />
               <label
-                htmlFor="mobile-menu-checkbox"
                 className="flex size-10 cursor-pointer items-center justify-center rounded-[3px] border-2 border-white xl:hidden"
                 id="mobile-menu-button"
+                onClick={() => setMobileMenuOpen((open) => !open)}
               >
                 <span className="sr-only">Open main menu</span>
                 <span className="inline-block size-6">
@@ -59,7 +61,7 @@ const NavBar = () => {
           </div>
         </div>
         {/* Header bottom mobile menu */}
-        <MobileMenu />
+        <MobileMenu mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       </header>
     </>
   )

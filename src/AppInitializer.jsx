@@ -19,7 +19,7 @@ const AppInitializer = () => {
     document.addEventListener('ageGateCompleted', initializeApp);
 
     // On mount: check if cookie already exists
-    if (document.cookie.includes('resp-agev-age-verification-passed=true') || document.cookie.includes('swa_Common/isAgeChecked')) {
+    if (document.cookie.includes('resp-agev-age-verification-passed=true') || document.cookie.includes('swa_Common/isAgeChecked') || sessionStorage.getItem('passedAgeGate')==="true") {
       initializeApp();
     }
 

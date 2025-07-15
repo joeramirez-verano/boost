@@ -142,11 +142,14 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 			
 			// the age gate is not shown on legal pages
 			const isLegalPage = ['/privacy-policy', '/service-animal-policy', '/hipaa', '/terms-of-use', '/terms-of-service', '/accessibility', '/covid-19-response'].some(page => window.location.href.includes(page));
-			
+
+            // Check sessionStorage for passedAgeGate for connecticutt locations
+            const sessionPassedAgeGate = sessionStorage.getItem('passedAgeGate');
+
 			// the age gate is not shown if the user has previously passed the age gate
 			const isPassedAgeGate = verano.getCookie('resp-agev-age-verification-passed');
 
-			if (isSearchEngineBot || isLegalPage || isPassedAgeGate) {
+			if (isSearchEngineBot || isLegalPage || isPassedAgeGate || sessionPassedAgeGate === 'true') {
 			document.documentElement.classList.add('passedAgeGate');
 				return true;
 			} else {
@@ -476,7 +479,7 @@ if (window.location.href.includes('display-new-age-gate') || window.location.hre
 			if (!verano.isPassedAgeGate()) {
 			  let ageGatePassedAlready = false;
 			  const interval = setInterval(() => {
-				const isPassed = verano.getCookie('resp-agev-age-verification-passed');
+				const isPassed = verano.getCookie('resp-agev-age-verification-passed') || verano.getCookie('swa_Common/isAgeChecked') || sessionStorage.getItem('passedAgeGate') === "true";
 				if (isPassed && !ageGatePassedAlready) {
 				  ageGatePassedAlready = true;
 				  document.dispatchEvent(new CustomEvent('ageGateCompleted', { detail: { passed: true } }));

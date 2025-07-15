@@ -20,7 +20,7 @@ export const appInitialState = {
   allStoreLocations: null,
   sweedStoreInfolist: null,
 
-  passedAgeGate: Cookies.get('swa_Common/isAgseChecked') ?? Cookies.get('resp-agev-age-verification-passed'),
+  passedAgeGate: Cookies.get('swa_Common/isAgeChecked') ?? Cookies.get('resp-agev-age-verification-passed'),
   hideDeliveryModal: null,
   stateModalBox: null,
   storeTypeModal: null,
@@ -56,7 +56,8 @@ const COOKIES_CONFIG = [
   {stateKey: 'closedInstallAppBanner', cookieKey: 'closedInstallAppBanner'}
 ]
 
-export class AppController extends StateController {
+class AppController extends StateController {
+  static className = 'AppController'
   isConnecticut = false;
 
   constructor() {

@@ -13,14 +13,33 @@ export class StateController {
     activeSubscriptions = new Map();
 
     constructor(initialState) {
-        this.store = store;
-        this.initialState = initialState;
-        this.state = atom(this.initialState);
-        this.focusState = {};
-        Object.keys(initialState).forEach(key => {
-            this.getFocusItem(key);
-        });
-    }
+        const controllerName = this.constructor.className
+        if (typeof window !== 'undefined' && window[controllerName]) {
+          const existing = window[controllerName].getStoreKeys()
+    
+          this.store = existing.store
+          this.initialState = existing.initialState
+          this.state = existing.state
+          this.focusState = existing.focusState
+          this.activeSubscriptions = existing.activeSubscriptions
+        } else {
+          this.store = store
+          this.initialState = initialState
+          this.state = atom(this.initialState)
+          this.focusState = {}
+          Object.keys(initialState).forEach((key) => {
+            this.getFocusItem(key)
+          })
+    
+          if (typeof window !== 'undefined') {
+            window[controllerName] = this
+          }
+        }
+      }
+    
+      getStoreKeys() {
+        return this
+      }
 
     getFocusItem(key) {
         if (!this.focusState[key]) {
