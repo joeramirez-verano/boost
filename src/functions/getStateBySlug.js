@@ -10,7 +10,7 @@ export default async function getStateBySlug(slug) {
   }
   let response;
   try {
-    response = await fetch(`${import.meta.env.VITE_PUBLIC_API_BASE_URL}/api/locations/${slug}/`)
+    response = await fetch(`https://hqdkgw1gc17otizysmx0zqih6.js.wpenginepowered.com/api/locations/${slug}/`)
     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
     return await response.json()
   } catch (e) {
