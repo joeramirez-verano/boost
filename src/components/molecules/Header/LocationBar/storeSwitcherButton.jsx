@@ -11,7 +11,6 @@ const StoreSwitcherButton = () => {
   const stateValues = appController.useState(['myLocation', 'storeLocation', 'deliveryAddress'])
   const {myLocation, storeLocation, deliveryAddress} = stateValues
   const orderType = myLocation?.orderType
-  const {storeMenuUrl} = getStoreMenuTypeAndUrl(storeLocation)
   function switchTheStore(newStore, userLocation) {
     appController.updateState({
       myLocation: {
@@ -76,7 +75,7 @@ const StoreSwitcherButton = () => {
 
   return (
     <>
-    <Link to={"https://zenleafdispensaries.com"+storeMenuUrl}>
+    <Link to={"https://zenleafdispensaries.com/locations"}>
       <div className={`${theme[CURRENT_BRAND].textColor} relative z-30 max-sm:flex-1 lg:inline-block`}>
         <button
           // onClick={() => {
