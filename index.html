@@ -15,7 +15,41 @@
       }
      </script>
 
-    <script src="/js-scripts/global.js"></script>
+    <script>
+    (function() {
+      const primaryBase = "https://h0un1i18lita20bb9j7f6rfw6.js.wpenginepowered.com/boost/";
+      const fallbackBase = "https://zenleafdispensaries.com/boost/";
+
+      function loadCSS(filename) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = primaryBase + filename;
+        link.onerror = function() {
+          // Retry with fallback
+          link.href = fallbackBase + filename;
+          link.onerror = null; // Prevent infinite loop
+        };
+        document.head.appendChild(link);
+      }
+
+      function loadJS(filename,type=undefined) {
+        const script = document.createElement('script');
+        script.src = primaryBase + filename;
+        script.async = false;
+        type ? script.type = type:"";
+        script.onerror = function() {
+          // Retry with fallback
+          script.src = fallbackBase + filename;
+          script.onerror = null; // Prevent infinite loop
+        };
+        document.head.appendChild(script);
+      }
+
+      loadCSS("assets/index-Dm-0xfUw.css");
+      loadJS("assets/index-BT_039v4.js",'module');
+      loadJS("js-scripts/global.js")
+    })();
+    </script>
   </head>
   <body>
     <!-- Static header HTML for SEO, hidden immediately with inline CSS -->
@@ -1310,12 +1344,10 @@
             >
           </nav>
           <p class="mb-0 text-center text-sm font-semibold">
-            Copyright © 2025 Zen Leaf.
+           s Copyright © 2025 Zen Leaf.
           </p>
         </div>
       </div>
     </footer>
-
-    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
